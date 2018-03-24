@@ -1,0 +1,47 @@
+package application.db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class MyConnection {
+	private final static String URL = "jdbc:mysql://localhost:3306/";
+	private final static String DATABASE = "spesa2?autoReconnect=true&useSSL=false";
+	private String user;
+	private String password;
+
+	public MyConnection() {
+		user="";
+		password="";
+	}
+	
+	public MyConnection setUser(String user) {
+		this.user=user;
+		return this;
+	}
+	
+	/**
+	 * @param password the password to set
+	 */
+	public MyConnection setPassword(String password) {
+		this.password=password;
+		return this;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%-20s\n%-15s - %-15s\n", URL+DATABASE,user,password);
+	}
+
+	public Connection open() {
+		// TODO Auto-generated method stub
+		try {
+			return DriverManager.getConnection(URL + DATABASE, user, password);
+		} catch (SQLException e) {
+			System.out.println("Driver JDBC mancante o credenziali di accesso non valide");
+			System.exit(0);
+		};
+		return null;
+	}
+
+}

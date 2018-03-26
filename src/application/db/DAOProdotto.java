@@ -7,11 +7,10 @@ import java.sql.Statement;
 import application.model.Prodotto;
 
 public class DAOProdotto extends DAO<Prodotto> {
-	
 	public DAOProdotto() {
 
 	}
-
+	
 	@Override
 	public int leggi() {
 		int conta=0;
@@ -19,8 +18,8 @@ public class DAOProdotto extends DAO<Prodotto> {
 				"	from spesa2.prodotto, spesa2.negozio" + 
 				"	where prodotto.negozio_idNegozio=negozio.idNegozio order by prodotto.nome";
 
-		try (Statement st = conn.createStatement()) {
-			ResultSet rs = st.executeQuery(SQL);
+		try (PreparedStatement st = conn.prepareStatement(SQL)) {
+			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				Prodotto record = new Prodotto(
 						rs.getInt("idProdotto"),

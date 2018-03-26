@@ -18,8 +18,8 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 		int conta=0;
 		String SQL = "select idNegozio, nome from spesa2.Negozio order by nome";
 
-		try (Statement st = conn.createStatement()) {
-			ResultSet rs = st.executeQuery(SQL);
+		try (PreparedStatement st = conn.prepareStatement(SQL)) {
+			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				SuperMercato record = new SuperMercato(rs.getInt("idNegozio"), rs.getString("nome"));
 				conta++;

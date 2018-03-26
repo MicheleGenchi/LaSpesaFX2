@@ -7,13 +7,14 @@ import java.sql.Statement;
 import application.model.Prodotto;
 
 public class DAOProdotto extends DAO<Prodotto> {
-
+	
 	public DAOProdotto() {
 
 	}
 
 	@Override
-	public boolean leggi() {
+	public int leggi() {
+		int conta=0;
 		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
 				"	from spesa2.prodotto, spesa2.negozio" + 
 				"	where prodotto.negozio_idNegozio=negozio.idNegozio order by prodotto.nome";
@@ -32,13 +33,13 @@ public class DAOProdotto extends DAO<Prodotto> {
 						rs.getFloat("prezzo"),
 						rs.getInt("negozio_idNegozio"));
 				record.setNomeSuperMercato(rs.getString("negozio.nome"));
+				conta++;
 				dati.add(record);
 			}
-			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return conta;
 	}
 
 	@Override

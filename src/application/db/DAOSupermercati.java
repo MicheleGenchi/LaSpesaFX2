@@ -14,20 +14,21 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 	}
 
 	@Override
-	public boolean leggi() {
+	public int leggi() {
+		int conta=0;
 		String SQL = "select idNegozio, nome from spesa2.Negozio order by nome";
 
 		try (Statement st = conn.createStatement()) {
 			ResultSet rs = st.executeQuery(SQL);
 			while (rs.next()) {
 				SuperMercato record = new SuperMercato(rs.getInt("idNegozio"), rs.getString("nome"));
+				conta++;
 				dati.add(record);
 			}
-			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return conta;
 	}
 
 	@Override

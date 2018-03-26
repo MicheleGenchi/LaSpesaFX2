@@ -12,6 +12,7 @@ public class Prodotto {
 	private IntegerProperty idprodotto=new SimpleIntegerProperty();
 	private StringProperty nome=new SimpleStringProperty();
 	private StringProperty descrizione=new SimpleStringProperty();
+	private StringProperty marca=new SimpleStringProperty();
 	private StringProperty contenitore=new SimpleStringProperty();
 	private IntegerProperty peso=new SimpleIntegerProperty();
 	private IntegerProperty quantità=new SimpleIntegerProperty();
@@ -20,12 +21,13 @@ public class Prodotto {
 	private StringProperty nomeSuperMercato=new SimpleStringProperty();
 	
 	
-	public Prodotto(int idprodotto, String nome, String descrizione,
+	public Prodotto(int idprodotto, String nome, String descrizione, String marca,
 			String contenitore, int peso, int quantità, float prezzo,
 			int negozio_idNegozio) {
 		setIdprodotto(idprodotto);
 		setNome(nome);
 		setDescrizione(descrizione);
+		setMarca(marca);
 		setContenitore(contenitore);
 		setPeso(peso);
 		setQuantità(quantità);
@@ -193,16 +195,32 @@ public class Prodotto {
 	}
 
 
+		public final StringProperty marcaProperty() {
+		return this.marca;
+	}
+	
+
+
+	public final String getMarca() {
+		return this.marcaProperty().get();
+	}
+	
+
+
+	public final void setMarca(final String marca) {
+		this.marcaProperty().set(marca);
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Prodotto [idprodotto=" + getIdprodotto() + ", nome=" + getNome() + ", descrizione=" + getDescrizione()
-				+ ", contenitore=" + getContenitore() + ", peso=" + getPeso() + ", quantità=" + getQuantità() + ", prezzo=" + getPrezzo()
+				+ ", marca="+ getMarca() + ", contenitore=" + getContenitore() + ", peso=" + getPeso() + ", quantità=" + getQuantità() + ", prezzo=" + getPrezzo()
 				+ ", negozio_idNegozio=" + getNegozio_idNegozio() + ", nomeSuperMercato=" + getNomeSuperMercato() + "]";
 	}
-	
 }
 
 

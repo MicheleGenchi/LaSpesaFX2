@@ -14,16 +14,18 @@ public class DAOProdotto extends DAO<Prodotto> {
 
 	@Override
 	public boolean leggi() {
-		String SQL = "select  idprodotto,prodotto.nome,descrizione,contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
+		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
 				"	from spesa2.prodotto, spesa2.negozio" + 
 				"	where prodotto.negozio_idNegozio=negozio.idNegozio order by prodotto.nome";
 
 		try (Statement st = conn.createStatement()) {
 			ResultSet rs = st.executeQuery(SQL);
 			while (rs.next()) {
-				Prodotto record = new Prodotto(rs.getInt("idProdotto"),
+				Prodotto record = new Prodotto(
+						rs.getInt("idProdotto"),
 						rs.getString("nome"),
 						rs.getString("descrizione"),
+						rs.getString("marca"),
 						rs.getString("contenitore"),
 						rs.getInt("peso"),
 						rs.getInt("quantità"),
@@ -41,7 +43,7 @@ public class DAOProdotto extends DAO<Prodotto> {
 
 	@Override
 	public int scrivi() {
-		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,contenitore,peso,quantità,prezzo,negozio.idNegozio) "
+		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio.idNegozio) "
 				+ "value (%1,%2,%3,%4,%5,%6,%7);";
 		int conta = 0;
 		try {
@@ -49,11 +51,12 @@ public class DAOProdotto extends DAO<Prodotto> {
 			for (Prodotto record : dati) {
 				st.setString(1, record.getNome());
 				st.setString(2, record.getDescrizione());
-				st.setString(3, record.getContenitore());
-				st.setInt(4, record.getPeso());
-				st.setInt(5, record.getQuantità());
-				st.setFloat(6, record.getPrezzo());
-				st.setInt(7, record.getNegozio_idNegozio());
+				st.setString(3, record.getMarca());
+				st.setString(4, record.getContenitore());
+				st.setInt(5, record.getPeso());
+				st.setInt(6, record.getQuantità());
+				st.setFloat(7, record.getPrezzo());
+				st.setInt(8, record.getNegozio_idNegozio());
 				conta = st.executeUpdate();
 			}
 		} catch (SQLException e) {

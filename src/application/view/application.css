@@ -3,6 +3,11 @@
 	-fx-background-color: black;
 }
 
+#menu {
+		-fx-background-color: black;
+		-fx-text-fill: white ;
+}
+
 .menu-bar {
 	-fx-background-color: black; 
 	-fx-text-fill: yellow ;

@@ -34,11 +34,14 @@ public class MyConnection {
 	}
 
 	public Connection open() {
-		// TODO Auto-generated method stub
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			return DriverManager.getConnection(URL + DATABASE, user, password);
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException e1) {
 			System.out.println("Driver JDBC mancante o credenziali di accesso non valide");
+			e1.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("Credenziali di accesso non valide");
 			System.exit(0);
 		};
 		return null;

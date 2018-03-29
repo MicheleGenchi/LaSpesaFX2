@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -8,36 +7,32 @@
 
 <FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="menu-bar" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.MenuController">
    <children>
-      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css">
+      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="pane" stylesheets="@application.css">
         <menus>
-          <Menu mnemonicParsing="false" text="Accesso">
+          <Menu id="menu" mnemonicParsing="false" text="Accesso">
             <items>
               <MenuItem mnemonicParsing="false" text="Login" />
                   <MenuItem mnemonicParsing="false" text="Chiudi" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Supermercato">
+          <Menu id="menu" mnemonicParsing="false" text="Supermercato">
             <items>
               <MenuItem fx:id="diAggiungiSupermercato" mnemonicParsing="false" onAction="#doAggiungiSupermercato" text="Aggiungi" />
                   <MenuItem mnemonicParsing="false" text="Visualizza" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Prodotto">
+            <Menu id="menu" mnemonicParsing="false" text="Prodotto">
               <items>
                 <MenuItem mnemonicParsing="false" text="Aggiungi" />
                   <MenuItem mnemonicParsing="false" text="Visualizza" />
               </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="Aiuto">
+          <Menu id="menu" mnemonicParsing="false" text="Aiuto">
             <items>
               <MenuItem mnemonicParsing="false" text="Informazioni" />
             </items>
           </Menu>
         </menus>
-         <styleClass>
-            <String fx:value="menu-bar" />
-            <String fx:value="label" />
-         </styleClass>
       </MenuBar>
    </children>
 </FlowPane>

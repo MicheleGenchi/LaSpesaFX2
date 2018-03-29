@@ -65,5 +65,10 @@ public class MainController {
 		this.borderPane = borderPane;
 	}
 
+	public void set(Node view) {
+		// TODO Auto-generated method stub
+		borderPane.setCenter(view);
+	}
+
 }
 

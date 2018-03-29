@@ -48,7 +48,14 @@ public class MainController {
         assert mnuLogin != null : "fx:id=\"mnuLogin\" was not injected: check your FXML file 'Main.fxml'.";
         assert mnuChiudi != null : "fx:id=\"mnuChiudi\" was not injected: check your FXML file 'Main.fxml'.";
         assert mnuInformazioni != null : "fx:id=\"mnuInformazioni\" was not injected: check your FXML file 'Main.fxml'.";
-        TableController.injectionMainController(this);
     }
+
+	/**
+	 * @return the borderPane
+	 */
+	protected BorderPane getBorderPane() {
+		return borderPane;
+	}
+
 }
 

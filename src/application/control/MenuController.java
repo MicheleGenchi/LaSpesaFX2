@@ -31,7 +31,7 @@ public class MenuController extends MainController {
 			viewAggiungiSupermercato = loader.load();
 			// viewAggiungiSupermercato.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
 			System.out.println(super.toString());
-			super.getBorderPane().setCenter(viewAggiungiSupermercato);
+			//super.getBorderPane().setCenter(viewAggiungiSupermercato);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.err.println("viewAggiungiSupermercato = (VBox) loader.load();");

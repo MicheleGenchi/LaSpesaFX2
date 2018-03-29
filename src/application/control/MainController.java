@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
@@ -53,8 +54,15 @@ public class MainController {
 	/**
 	 * @return the borderPane
 	 */
-	protected BorderPane getBorderPane() {
+	public BorderPane getBorderPane() {
 		return borderPane;
+	}
+
+	/**
+	 * @param borderPane the borderPane to set
+	 */
+	public void setBorderPane(BorderPane borderPane) {
+		this.borderPane = borderPane;
 	}
 
 }

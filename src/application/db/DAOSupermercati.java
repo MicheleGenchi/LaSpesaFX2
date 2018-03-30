@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import application.model.Prodotto;
@@ -19,12 +20,12 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 	public int leggi() {
 		int conta=0;
 		String SQL = "select Negozio.idNegozio, Negozio.nome  from spesa2.Negozio order by nome";
-
 		try (PreparedStatement st = conn.prepareStatement(SQL)) {
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				SuperMercato record = new SuperMercato(rs.getInt("idNegozio"), rs.getString("nome"));
 				conta++;
+				record.setListaProdotti(getProdotti(record.getKey()));
 				dati.add(record);
 			}
 		} catch (SQLException e) {
@@ -50,14 +51,14 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 		return conta;
 	}
 	
-	public int getProdotti(List<Prodotto> lista, SuperMercato superMercato) {
-		int conta=0;
-		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
-				"	from spesa2.prodotto, spesa2.negozio" + 
+	public List<Prodotto> getProdotti(int  fkidNegozio) {
+		List<Prodotto> lista=new ArrayList<>();
+		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore," +
+				"   peso,quantità,prezzo, negozio_idNegozio,negozio.nome" + 
+				"	from spesa2.prodotto, spesa2.Negozio" + 
 				"	where negozio_idNegozio=? order by prodotto.nome";
-
 		try (PreparedStatement st = conn.prepareStatement(SQL)) {
-			st.setInt(1, superMercato.getKey());
+			st.setInt(1, fkidNegozio);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				Prodotto record = new Prodotto(
@@ -71,13 +72,11 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 						rs.getFloat("prezzo"),
 						rs.getInt("negozio_idNegozio"),
 						rs.getString("negozio.nome"));
-				conta++;
 				lista.add(record);
 			}
-			superMercato.setProdotti(lista);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return conta;
+		return lista;
 	}
 }

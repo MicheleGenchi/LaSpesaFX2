@@ -5,8 +5,8 @@ import java.util.List;
 public class SuperMercato {
 	private int key;
 	private String nome;
-	private List<Prodotto> prodotti;
-
+	private List<Prodotto> listaProdotti;
+	
 	public SuperMercato(int key, String nome) {
 		setKey(key);
 		setNome(nome);
@@ -14,6 +14,10 @@ public class SuperMercato {
 
 	public SuperMercato() {
 		this(0, "");
+	}
+	
+	public SuperMercato(ModelSuperMercato supermercato) {
+		this(supermercato.getKey(),supermercato.getNome());
 	}
 
 	/**
@@ -47,17 +51,17 @@ public class SuperMercato {
 	}
 
 	/**
-	 * @return the prodotti
+	 * @return the listaProdotti
 	 */
-	public List<Prodotto> getProdotti() {
-		return prodotti;
+	public List<Prodotto> getListaProdotti() {
+		return listaProdotti;
 	}
 
 	/**
-	 * @param prodotti the prodotti to set
+	 * @param listaProdotti the listaProdotti to set
 	 */
-	public void setProdotti(List<Prodotto> prodotti) {
-		this.prodotti = prodotti;
+	public void setListaProdotti(List<Prodotto> listaProdotti) {
+		this.listaProdotti = listaProdotti;
 	}
 	
 	/*
@@ -67,6 +71,7 @@ public class SuperMercato {
 	 */
 	@Override
 	public String toString() {
-		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+ " prodotti =" + getProdotti();
+		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+"\n"+
+				(getListaProdotti().size()==0?"Non ci sono prodotti in questo negozio":"I prodotti in questo negozio sono:\n"+ getListaProdotti())+"\n";
 	}
 }

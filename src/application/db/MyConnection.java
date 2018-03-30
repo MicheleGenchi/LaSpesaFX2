@@ -9,10 +9,23 @@ public class MyConnection {
 	private final static String DATABASE = "spesa2?autoReconnect=true&useSSL=false";
 	private String user;
 	private String password;
+	private static MyConnection instance;
 
-	public MyConnection() {
+	private MyConnection() {
 		user="";
 		password="";
+	}
+	
+	public static MyConnection getInstance() {
+		if (instance == null) {
+			// Thread Safe. Might be costly operation in some case
+			synchronized (MyConnection.class) {
+				if (instance == null) {
+					instance = new MyConnection();
+				}
+			}
+		}
+		return instance;
 	}
 	
 	public MyConnection setUser(String user) {

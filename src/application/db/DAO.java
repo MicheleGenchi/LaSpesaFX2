@@ -12,7 +12,7 @@ public abstract class DAO<e> {
 	protected List<e> dati; 
 	
 	public DAO() {
-		conn = new MyConnection().setUser("root").setPassword("mysql123").open();
+		conn = MyConnection.getInstance().setUser("root").setPassword("mysql123").open();
 		dati=new ArrayList<>();
 	}
 	

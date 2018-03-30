@@ -1,226 +1,207 @@
 package application.model;
 
-
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Prodotto {
-	private IntegerProperty idprodotto=new SimpleIntegerProperty();
-	private StringProperty nome=new SimpleStringProperty();
-	private StringProperty descrizione=new SimpleStringProperty();
-	private StringProperty marca=new SimpleStringProperty();
-	private StringProperty contenitore=new SimpleStringProperty();
-	private IntegerProperty peso=new SimpleIntegerProperty();
-	private IntegerProperty quantit‡=new SimpleIntegerProperty();
-	private FloatProperty prezzo=new SimpleFloatProperty();
-	private IntegerProperty negozio_idNegozio=new SimpleIntegerProperty();
-	private StringProperty nomeSuperMercato=new SimpleStringProperty();
-	
-	
-	public Prodotto(int idprodotto, String nome, String descrizione, String marca,
-			String contenitore, int peso, int quantit‡, float prezzo,
-			int negozio_idNegozio) {
-		setIdprodotto(idprodotto);
-		setNome(nome);
-		setDescrizione(descrizione);
-		setMarca(marca);
-		setContenitore(contenitore);
-		setPeso(peso);
-		setQuantit‡(quantit‡);
-		setPrezzo(prezzo);
-		setNegozio_idNegozio(negozio_idNegozio);
+	private int idprodotto;
+	private String nome;
+	private String descrizione;
+	private String marca;
+	private String contenitore;
+	private int peso;
+	private int quantit‡;
+	private float prezzo;
+	private int negozio_idNegozio; 
+	private String nomeSuperMercato;
+
+	public Prodotto() {
+		this(0, "", "", "", "", 0, 0, 0.0f,0,"");
 	}
 
-
-	public final IntegerProperty idprodottoProperty() {
-		return this.idprodotto;
-	}
-	
-
-
-	public final int getIdprodotto() {
-		return this.idprodottoProperty().get();
-	}
-	
-
-
-	public final void setIdprodotto(final int idprodotto) {
-		this.idprodottoProperty().set(idprodotto);
-	}
-	
-
-
-	public final StringProperty nomeProperty() {
-		return this.nome;
-	}
-	
-
-
-	public final String getNome() {
-		return this.nomeProperty().get();
-	}
-	
-
-
-	public final void setNome(final String nome) {
-		this.nomeProperty().set(nome);
-	}
-	
-
-
-	public final StringProperty descrizioneProperty() {
-		return this.descrizione;
-	}
-	
-
-
-	public final String getDescrizione() {
-		return this.descrizioneProperty().get();
-	}
-	
-
-
-	public final void setDescrizione(final String descrizione) {
-		this.descrizioneProperty().set(descrizione);
-	}
-	
-
-
-	public final StringProperty contenitoreProperty() {
-		return this.contenitore;
-	}
-	
-
-
-	public final String getContenitore() {
-		return this.contenitoreProperty().get();
-	}
-	
-
-
-	public final void setContenitore(final String contenitore) {
-		this.contenitoreProperty().set(contenitore);
-	}
-	
-
-
-	public final IntegerProperty pesoProperty() {
-		return this.peso;
-	}
-	
-
-
-	public final int getPeso() {
-		return this.pesoProperty().get();
-	}
-	
-
-
-	public final void setPeso(final int peso) {
-		this.pesoProperty().set(peso);
-	}
-	
-
-
-	public final IntegerProperty quantit‡Property() {
-		return this.quantit‡;
-	}
-	
-
-
-	public final int getQuantit‡() {
-		return this.quantit‡Property().get();
-	}
-	
-
-
-	public final void setQuantit‡(final int quantit‡) {
-		this.quantit‡Property().set(quantit‡);
-	}
-	
-
-
-	public final FloatProperty prezzoProperty() {
-		return this.prezzo;
-	}
-	
-
-
-	public final float getPrezzo() {
-		return this.prezzoProperty().get();
-	}
-	
-
-
-	public final void setPrezzo(final float prezzo) {
-		this.prezzoProperty().set(prezzo);
+	public Prodotto(int idprodotto, String nome, String descrizione, String marca, String contenitore, 
+			int peso, int quantit‡, float prezzo, int negozio_idNegozio, String nomeSuperMercato) {
+		this.idprodotto = idprodotto;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.marca = marca;
+		this.contenitore = contenitore;
+		this.peso = peso;
+		this.quantit‡ = quantit‡;
+		this.prezzo = prezzo;
+	    this.negozio_idNegozio = negozio_idNegozio; 
+	    this.nomeSuperMercato = nomeSuperMercato;
 	}
 
-
-	public final IntegerProperty negozio_idNegozioProperty() {
-		return this.negozio_idNegozio;
-	}
-	
-
-
-	public final int getNegozio_idNegozio() {
-		return this.negozio_idNegozioProperty().get();
-	}
-	
-
-
-	public final void setNegozio_idNegozio(final int negozio_idNegozio) {
-		this.negozio_idNegozioProperty().set(negozio_idNegozio);
+	public Prodotto(ModelProdotto modelProdotto) {
+		
+		this(modelProdotto.getIdprodotto(), 
+				modelProdotto.getNome(),
+		modelProdotto.getDescrizione(),
+		modelProdotto.getMarca(),
+		modelProdotto.getContenitore(),
+		modelProdotto.getPeso(),
+		modelProdotto.getQuantit‡(),
+		modelProdotto.getPrezzo(),
+		modelProdotto.getNegozio_idNegozio(),
+		modelProdotto.getNomeSuperMercato()); 
 	}
 
-
-	public final StringProperty nomeSuperMercatoProperty() {
-		return this.nomeSuperMercato;
-	}
-	
-
-
-	public final String getNomeSuperMercato() {
-		return this.nomeSuperMercatoProperty().get();
-	}
-	
-
-
-	public final void setNomeSuperMercato(final String nomeSuperMercato) {
-		this.nomeSuperMercatoProperty().set(nomeSuperMercato);
+	/**
+	 * @return the idprodotto
+	 */
+	public int getIdprodotto() {
+		return idprodotto;
 	}
 
-
-		public final StringProperty marcaProperty() {
-		return this.marca;
+	/**
+	 * @param idprodotto
+	 *            the idprodotto to set
+	 */
+	public void setIdprodotto(int idprodotto) {
+		this.idprodotto = idprodotto;
 	}
-	
 
-
-	public final String getMarca() {
-		return this.marcaProperty().get();
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
 	}
-	
 
-
-	public final void setMarca(final String marca) {
-		this.marcaProperty().set(marca);
+	/**
+	 * @param nome
+	 *            the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	
-	
+
+	/**
+	 * @return the descrizione
+	 */
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	/**
+	 * @param descrizione
+	 *            the descrizione to set
+	 */
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	/**
+	 * @return the marca
+	 */
+	public String getMarca() {
+		return marca;
+	}
+
+	/**
+	 * @param marca
+	 *            the marca to set
+	 */
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	/**
+	 * @return the contenitore
+	 */
+	public String getContenitore() {
+		return contenitore;
+	}
+
+	/**
+	 * @param contenitore
+	 *            the contenitore to set
+	 */
+	public void setContenitore(String contenitore) {
+		this.contenitore = contenitore;
+	}
+
+	/**
+	 * @return the peso
+	 */
+	public int getPeso() {
+		return peso;
+	}
+
+	/**
+	 * @param peso
+	 *            the peso to set
+	 */
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
+
+	/**
+	 * @return the quantit‡
+	 */
+	public int getQuantit‡() {
+		return quantit‡;
+	}
+
+	/**
+	 * @param quantit‡
+	 *            the quantit‡ to set
+	 */
+	public void setQuantit‡(int quantit‡) {
+		this.quantit‡ = quantit‡;
+	}
+
+	/**
+	 * @return the prezzo
+	 */
+	public float getPrezzo() {
+		return prezzo;
+	}
+
+	/**
+	 * @param prezzo
+	 *            the prezzo to set
+	 */
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	/**
+	 * @return the negozio_idNegozio
+	 */
+	public int getNegozio_idNegozio() {
+		return negozio_idNegozio;
+	}
+
+	/**
+	 * @param negozio_idNegozio
+	 *            the negozio_idNegozio to set
+	 */
+	public void setNegozio_idNegozio(int negozio_idNegozio) {
+		this.negozio_idNegozio = negozio_idNegozio;
+	}
+
+	/**
+	 * @return the nomeSuperMercato
+	 */
+	public String getNomeSuperMercato() {
+		return nomeSuperMercato;
+	}
+
+	/**
+	 * @param nomeSuperMercato
+	 *            the nomeSuperMercato to set
+	 */
+	public void setNomeSuperMercato(String nomeSuperMercato) {
+		this.nomeSuperMercato = nomeSuperMercato;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Prodotto [idprodotto=" + getIdprodotto() + ", nome=" + getNome() + ", descrizione=" + getDescrizione()
-				+ ", marca="+ getMarca() + ", contenitore=" + getContenitore() + ", peso=" + getPeso() + ", quantit‡=" + getQuantit‡() + ", prezzo=" + getPrezzo()
-				+ ", negozio_idNegozio=" + getNegozio_idNegozio() + ", nomeSuperMercato=" + getNomeSuperMercato() + "]";
+		return "Prodotto [idprodotto=" + idprodotto + ", nome=" + nome + ", descrizione=" + descrizione + ", marca="
+				+ marca + ", contenitore=" + contenitore + ", peso=" + peso + ", quantit‡=" + quantit‡ + ", prezzo="
+				+ prezzo + ", negozio_idNegozio=" + negozio_idNegozio + ", nomeSuperMercato=" + nomeSuperMercato + "]";
 	}
+
 }
-
-

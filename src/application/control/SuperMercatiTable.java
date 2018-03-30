@@ -1,8 +1,8 @@
 package application.control;
 
-import application.model.SuperMercato;
+import application.model.ModelSuperMercato;
 
-public class SuperMercatiTable extends TableController<SuperMercato> {
+public class SuperMercatiTable extends TableController<ModelSuperMercato> {
 
 	public SuperMercatiTable() {
 		// TODO Auto-generated constructor stub

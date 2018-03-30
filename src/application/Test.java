@@ -2,7 +2,10 @@ package application;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.omg.Messaging.SyncScopeHelper;
 
 import application.db.DAOProdotto;
 import application.db.DAOSupermercati;
@@ -16,6 +19,7 @@ public class Test {
 		int conta=dao.leggi();
 		System.out.printf("%-3d%10s\n",conta,conta==1?" record letto":" records letti"); 
 		List<SuperMercato> lista=dao.getDati(); 
+		
 		lista.forEach(System.out::println);
 		
 		DAOProdotto dao2=new DAOProdotto();

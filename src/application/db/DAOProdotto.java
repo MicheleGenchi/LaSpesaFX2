@@ -1,4 +1,4 @@
-package application.db;
+ package application.db;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,8 +30,8 @@ public class DAOProdotto extends DAO<Prodotto> {
 						rs.getInt("peso"),
 						rs.getInt("quantità"),
 						rs.getFloat("prezzo"),
-						rs.getInt("negozio_idNegozio"));
-				record.setNomeSuperMercato(rs.getString("negozio.nome"));
+						rs.getInt("negozio_idNegozio"),
+						rs.getString("negozio.nome"));
 				conta++;
 				dati.add(record);
 			}

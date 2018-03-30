@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
+import application.model.Prodotto;
 import application.model.SuperMercato;
 
 public class DAOSupermercati extends DAO<SuperMercato> {
@@ -16,7 +18,7 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 	@Override
 	public int leggi() {
 		int conta=0;
-		String SQL = "select idNegozio, nome from spesa2.Negozio order by nome";
+		String SQL = "select Negozio.idNegozio, Negozio.nome  from spesa2.Negozio order by nome";
 
 		try (PreparedStatement st = conn.prepareStatement(SQL)) {
 			ResultSet rs = st.executeQuery();
@@ -47,5 +49,35 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 		}
 		return conta;
 	}
+	
+	public int getProdotti(List<Prodotto> lista, SuperMercato superMercato) {
+		int conta=0;
+		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
+				"	from spesa2.prodotto, spesa2.negozio" + 
+				"	where negozio_idNegozio=? order by prodotto.nome";
 
+		try (PreparedStatement st = conn.prepareStatement(SQL)) {
+			st.setInt(1, superMercato.getKey());
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Prodotto record = new Prodotto(
+						rs.getInt("idProdotto"),
+						rs.getString("nome"),
+						rs.getString("descrizione"),
+						rs.getString("marca"),
+						rs.getString("contenitore"),
+						rs.getInt("peso"),
+						rs.getInt("quantità"),
+						rs.getFloat("prezzo"),
+						rs.getInt("negozio_idNegozio"),
+						rs.getString("negozio.nome"));
+				conta++;
+				lista.add(record);
+			}
+			superMercato.setProdotti(lista);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conta;
+	}
 }

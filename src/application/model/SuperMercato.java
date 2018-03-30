@@ -1,52 +1,72 @@
 package application.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.util.List;
 
 public class SuperMercato {
-	private IntegerProperty key=new SimpleIntegerProperty();
-	private StringProperty nome=new SimpleStringProperty();
-	
+	private int key;
+	private String nome;
+	private List<Prodotto> prodotti;
+
 	public SuperMercato(int key, String nome) {
 		setKey(key);
 		setNome(nome);
 	}
 
 	public SuperMercato() {
-		// TODO Auto-generated constructor stub
+		this(0, "");
 	}
 
-	public final IntegerProperty keyProperty() {
-		return this.key;
+	/**
+	 * @return the key
+	 */
+	public int getKey() {
+		return key;
+	}
+
+	/**
+	 * @param key
+	 *            the key to set
+	 */
+	public void setKey(int key) {
+		this.key = key;
+	}
+
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @param nome
+	 *            the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @return the prodotti
+	 */
+	public List<Prodotto> getProdotti() {
+		return prodotti;
+	}
+
+	/**
+	 * @param prodotti the prodotti to set
+	 */
+	public void setProdotti(List<Prodotto> prodotti) {
+		this.prodotti = prodotti;
 	}
 	
-	public final int getKey() {
-		return this.keyProperty().get();
-	}
-
-	public final void setKey(final int key) {
-		this.keyProperty().set(key);
-	}
-	
-	public final StringProperty nomeProperty() {
-		return this.nome;
-	}
-
-	public final String getNome() {
-		return this.nomeProperty().get();
-	}
-
-	public final void setNome(final String nome) {
-		this.nomeProperty().set(nome);
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]";
+		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+ " prodotti =" + getProdotti();
 	}
 }

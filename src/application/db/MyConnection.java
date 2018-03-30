@@ -11,7 +11,8 @@ public class MyConnection {
 	private String password;
 	private static MyConnection instance;
 
-	private MyConnection() {
+	private
+	MyConnection() {
 		user="";
 		password="";
 	}

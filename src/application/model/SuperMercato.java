@@ -72,6 +72,6 @@ public class SuperMercato {
 	@Override
 	public String toString() {
 		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+"\n"+
-				(getListaProdotti().size()==0?"Non ci sono prodotti in questo negozio":"I prodotti in questo negozio sono:\n"+ getListaProdotti())+"\n";
+				(getListaProdotti().size()==0?"Non ci sono prodotti in questo negozio":"I prodotti in questo negozio sono:\n"+ getListaProdotti())+"\n\n";
 	}
 }

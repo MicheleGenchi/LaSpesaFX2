@@ -56,7 +56,9 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore," +
 				"   peso,quantità,prezzo, negozio_idNegozio,negozio.nome" + 
 				"	from spesa2.prodotto, spesa2.Negozio" + 
-				"	where negozio_idNegozio=? order by prodotto.nome";
+				"	where negozio_idNegozio=Negozio.idNegozio "
+				+ "and negozio_idNegozio=? order by prodotto.nome";
+		
 		try (PreparedStatement st = conn.prepareStatement(SQL)) {
 			st.setInt(1, fkidNegozio);
 			ResultSet rs = st.executeQuery();

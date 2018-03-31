@@ -201,7 +201,7 @@ public class Prodotto {
 	public String toString() {
 		return "Prodotto [idprodotto=" + idprodotto + ", nome=" + nome + ", descrizione=" + descrizione + ", marca="
 				+ marca + ", contenitore=" + contenitore + ", peso=" + peso + ", quantità=" + quantità + ", prezzo="
-				+ prezzo + ", negozio_idNegozio=" + negozio_idNegozio + ", nomeSuperMercato=" + nomeSuperMercato + "]";
+				+ prezzo + ",\n negozio_idNegozio=" + negozio_idNegozio + ", nomeSuperMercato=" + nomeSuperMercato + "]";
 	}
 
 }

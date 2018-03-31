@@ -20,10 +20,9 @@ public class ModelProdotto {
 	private IntegerProperty negozio_idNegozio=new SimpleIntegerProperty();
 	private StringProperty nomeSuperMercato=new SimpleStringProperty();
 	
-	
 	public ModelProdotto(int idprodotto, String nome, String descrizione, String marca,
 			String contenitore, int peso, int quantità, float prezzo,
-			int negozio_idNegozio) {
+			int negozio_idNegozio, String nomeSuperMercato) {
 		setIdprodotto(idprodotto);
 		setNome(nome);
 		setDescrizione(descrizione);
@@ -33,10 +32,24 @@ public class ModelProdotto {
 		setQuantità(quantità);
 		setPrezzo(prezzo);
 		setNegozio_idNegozio(negozio_idNegozio);
+		setNomeSuperMercato(nomeSuperMercato);
 	}
-
+	
+	public ModelProdotto(Prodotto prodotto) {
+		this(prodotto.getIdprodotto(),
+				prodotto.getNome(),
+				prodotto.getDescrizione(),
+				prodotto.getMarca(),
+				prodotto.getContenitore(),
+				prodotto.getPeso(),
+				prodotto.getQuantità(),
+				prodotto.getPrezzo(),
+				prodotto.getNegozio_idNegozio(),
+				prodotto.getNomeSuperMercato());
+	}
+	
 	public ModelProdotto() {
-		
+		this(0, "", "", "", "", 0, 0, 0.0f,0,"");
 	}
 
 	public final IntegerProperty idprodottoProperty() {

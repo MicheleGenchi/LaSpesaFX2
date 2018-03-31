@@ -1,21 +1,30 @@
 package application.model;
 
+import java.util.List;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ModelSuperMercato {
 	private IntegerProperty key=new SimpleIntegerProperty();
 	private StringProperty nome=new SimpleStringProperty();
+	private ObservableList<Prodotto> listaProdotti=FXCollections.observableArrayList();
 	
 	public ModelSuperMercato(int key, String nome) {
 		setKey(key);
 		setNome(nome);
 	}
 
+	public ModelSuperMercato(SuperMercato superMercato) {
+		this(superMercato.getKey(),superMercato.getNome());
+	}
+	
 	public ModelSuperMercato() {
-		// TODO Auto-generated constructor stub
+		this(0, "");
 	}
 
 	public final IntegerProperty keyProperty() {
@@ -48,5 +57,13 @@ public class ModelSuperMercato {
 	@Override
 	public String toString() {
 		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]";
+	}
+
+	public ObservableList<Prodotto> getListaProdotti() {
+		return listaProdotti;
+	}
+
+	public void setListaProdotti(List<Prodotto> listaProdotti) {
+		this.listaProdotti = FXCollections.observableArrayList(listaProdotti);
 	}
 }

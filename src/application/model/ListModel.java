@@ -5,12 +5,12 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Model<E>  {
+public class ListModel<E>  {
 
 	private List<E> listE; 
 	private ObservableList<E> oListE;
 	
-	public Model(List<E> listE) {
+	public ListModel(List<E> listE) {
 		this.listE=listE;
 		setoListE(listE);
 	}

@@ -7,6 +7,7 @@ import java.sql.Statement;
 import application.model.Prodotto;
 
 public class DAOProdotto extends DAO<Prodotto> {
+	
 	public DAOProdotto() {
 
 	}
@@ -65,5 +66,9 @@ public class DAOProdotto extends DAO<Prodotto> {
 		}
 		return conta;
 	}
-
+	
+	@Override
+	public String toString() {
+		return  "Tabella Prodotto";
+	}
 }

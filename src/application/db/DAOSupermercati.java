@@ -81,4 +81,10 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 		}
 		return lista;
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Tabella Supermercato";
+	}
 }

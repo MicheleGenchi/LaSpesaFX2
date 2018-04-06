@@ -1,6 +1,7 @@
 package application.db;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +9,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public abstract class DAO<e> {
-	Connection conn;
+	protected static Connection conn;
 	protected List<e> dati; 
 	
 	public DAO() {
-		conn = MyConnection.getInstance().setUser("root").setPassword("mysql123").open();
+		if (conn==null) 
+			conn = MyConnection.getInstance().setUser("root").setPassword("mysql123").open();
 		dati=new ArrayList<>();
 	}
 	
@@ -42,5 +44,18 @@ public abstract class DAO<e> {
 	 */
 	public void setDati(List<e> dati) {
 		this.dati = dati;
+	}
+	
+	@Override
+	public abstract String toString();
+	
+	protected void chiudi() {
+		try {
+			if (!conn.isClosed()) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			System.out.println("Nessuna connessiona da chiudere");
+		}
 	}
 }

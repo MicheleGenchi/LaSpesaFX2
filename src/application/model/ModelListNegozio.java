@@ -12,16 +12,16 @@ public class ModelListNegozio extends ListModel<SuperMercato>{
 	}
 	
 	public int cerca(String nomeNegozio) {
-		Comparator<? super SuperMercato> c=new Comparator<Object>() {
+		Comparator<? super SuperMercato> c=new Comparator<SuperMercato>() {
 
 			@Override
-			public int compare(Object o1, Object o2) {
+			public int compare(SuperMercato o1, SuperMercato o2) {
 				return ((SuperMercato) o1).getNome().compareToIgnoreCase(((SuperMercato) o1).getNome());
 			} 
 		};
 		this.getListE().sort(c);
 		
-		return Collections.binarySearch(this.getListE(), new SuperMercato(0,nomeNegozio), c);
+		return Collections.binarySearch(this.getListE(), new SuperMercato(1000, nomeNegozio), c);
 	}
 
 }

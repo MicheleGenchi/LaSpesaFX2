@@ -18,23 +18,28 @@ public class Test {
 	}
 
 	private void run() {
-		System.out.println("Tabella Supermercato");
-		System.out.println("--------------------");
 		ModelListNegozio lista=new ModelListNegozio(
 				(List<SuperMercato>) getListaDAO(new DAOSupermercati()));
+/*
+		System.out.println("Tabella Supermercato");
+		System.out.println("--------------------");
 		lista.getListE().forEach(System.out::print);
-		
-		System.out.println("\nTabella Prodotto");
-		System.out.println("----------------");
+*/
 		ModelListProdotto lista2=new ModelListProdotto(
 				(List<Prodotto>) getListaDAO(new DAOProdotto()));
+/*
+		System.out.println("\nTabella Prodotto");
+		System.out.println("----------------");
 		lista2.getListE().forEach(System.out::print);
-
+*/
+		System.out.print("\n\n\nCerca il negozio Dok\t");
+		System.out.println(lista.cerca("Dok"));
+//		lista.getListE().forEach(System.out::print);
 	}
 
 	private List<?> getListaDAO(DAO<?> dao) {
 		int conta=dao.leggi();
-		System.out.printf("%-3d%10s\n",conta,conta==1?" record letto":" records letti"); 
+		System.out.printf(dao+"\n%-3d%10s\n",conta,conta==1?" record letto":" records letti"); 
 		List<?> lista=dao.getDati(); 
 		return lista;
 	}

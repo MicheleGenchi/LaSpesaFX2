@@ -20,21 +20,19 @@ public class Test {
 	private void run() {
 		ModelListNegozio lista=new ModelListNegozio(
 				(List<SuperMercato>) getListaDAO(new DAOSupermercati()));
-/*
-		System.out.println("Tabella Supermercato");
-		System.out.println("--------------------");
 		lista.getListE().forEach(System.out::print);
-*/
+
+		
 		ModelListProdotto lista2=new ModelListProdotto(
 				(List<Prodotto>) getListaDAO(new DAOProdotto()));
-/*
-		System.out.println("\nTabella Prodotto");
-		System.out.println("----------------");
 		lista2.getListE().forEach(System.out::print);
-*/
+
+/*
 		System.out.print("\n\n\nCerca il negozio Dok\t");
 		System.out.println(lista.cerca("Dok"));
-//		lista.getListE().forEach(System.out::print);
+		lista.getListE().forEach(System.out::print);
+*/
+		DAO.chiudi();
 	}
 
 	private List<?> getListaDAO(DAO<?> dao) {

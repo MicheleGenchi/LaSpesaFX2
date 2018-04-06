@@ -49,7 +49,7 @@ public abstract class DAO<e> {
 	@Override
 	public abstract String toString();
 	
-	protected void chiudi() {
+	public static void chiudi() {
 		try {
 			if (!conn.isClosed()) {
 				conn.close();

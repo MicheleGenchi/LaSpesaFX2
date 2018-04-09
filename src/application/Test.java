@@ -18,15 +18,17 @@ public class Test {
 	}
 
 	private void run() {
-		ModelListNegozio lista = new ModelListNegozio((List<SuperMercato>) getListaDAO(new DAOSupermercati()));
+		DAOSupermercati dao=new DAOSupermercati();
+		ModelListNegozio lista = new ModelListNegozio((List<SuperMercato>) getListaDAO(dao));
 		lista.getListE().forEach(System.out::print);
 
 		ModelListProdotto lista2 = new ModelListProdotto((List<Prodotto>) getListaDAO(new DAOProdotto()));
 		lista2.getListE().forEach(System.out::print);
-		String negozioDaCercare="Conad";
+		String negozioDaCercare="Auchan";
 		System.out.printf("\n\n\nCerca il negozio (%3s)\t->\t",negozioDaCercare);
-		System.out.printf("key = %2s",lista.cerca(negozioDaCercare));
-		System.out.println();
+		int idNegozio=lista.cerca(negozioDaCercare);
+		System.out.printf("key = %2s\n",idNegozio);
+		dao.getProdotti(idNegozio).forEach(System.out::print);
 		DAO.chiudi();
 	}
 

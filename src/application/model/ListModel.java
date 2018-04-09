@@ -15,12 +15,12 @@ public class ListModel<E>  {
 		setoListE(listE);
 	}
 	
-	public boolean aggiungiNegozio(E negozio) {
-		return listE.add(negozio);
+	public boolean aggiungi(E e) {
+		return listE.add(e);
 	}
 	
-	public boolean deleteNegozio(E negozio) {
-		return listE.remove(negozio);
+	public boolean delete(E e) {
+		return listE.remove(e);
 	}
 	
 	/**

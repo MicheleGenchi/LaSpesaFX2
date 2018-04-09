@@ -23,10 +23,10 @@ public class Test {
 
 		ModelListProdotto lista2 = new ModelListProdotto((List<Prodotto>) getListaDAO(new DAOProdotto()));
 		lista2.getListE().forEach(System.out::print);
-
-		System.out.print("\n\n\nCerca il negozio Pam\t");
-		System.out.println(lista.cerca("Pam"));
-
+		String negozioDaCercare="Conad";
+		System.out.printf("\n\n\nCerca il negozio (%3s)\t->\t",negozioDaCercare);
+		System.out.printf("key = %2s",lista.cerca(negozioDaCercare));
+		System.out.println();
 		DAO.chiudi();
 	}
 

@@ -19,7 +19,7 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 	@Override
 	public int leggi() {
 		int conta=0;
-		String SQL = "select Negozio.idNegozio, Negozio.nome  from spesa2.Negozio order by nome";
+		String SQL = "select Negozio.idNegozio, Negozio.nome  from spesa2.Negozio";
 		try (PreparedStatement st = conn.prepareStatement(SQL)) {
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {

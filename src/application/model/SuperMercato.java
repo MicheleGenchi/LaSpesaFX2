@@ -76,4 +76,40 @@ public class SuperMercato {
 		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+"\n"+
 				(getListaProdotti().size()==0?"Non ci sono prodotti in questo negozio":"I prodotti in questo negozio sono:\n"+ getListaProdotti())+"\n\n";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof SuperMercato)) {
+			return false;
+		}
+		SuperMercato other = (SuperMercato) obj;
+		if (nome == null) {
+			if (other.nome != null) {
+				return false;
+			}
+		} else if (!nome.equals(other.nome)) {
+			return false;
+		}
+		return true;
+	}
 }

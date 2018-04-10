@@ -1,7 +1,5 @@
 package application.model;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class SuperMercato {
@@ -18,8 +16,9 @@ public class SuperMercato {
 		this(0, "");
 	}
 	
-	public SuperMercato(ModelSuperMercato supermercato) {
-		this(supermercato.getKey(),supermercato.getNome());
+	public void setFromModel(ModelSuperMercato supermercato) {
+		setKey(supermercato.getKey());
+		setNome(supermercato.getNome());
 	}
 
 	/**

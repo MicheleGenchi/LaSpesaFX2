@@ -51,7 +51,7 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 		return conta;
 	}
 	
-	public List<Prodotto> getProdotti(int  fkidNegozio) {
+	public List<Prodotto> getProdotti(int fkidNegozio) {
 		List<Prodotto> lista=new ArrayList<>();
 		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore," +
 				"   peso,quantità,prezzo, negozio_idNegozio,negozio.nome" + 

@@ -10,9 +10,6 @@
 
 .menu-bar {
 	-fx-background-color: black; 
-	-fx-text-fill: yellow ;
-	-fx-font-size: 12.0pt;
-    -fx-font-family: "Segoe UI Light";
     -fx-opacity: 0.9;
 }
 

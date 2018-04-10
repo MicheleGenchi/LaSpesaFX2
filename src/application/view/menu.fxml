@@ -7,29 +7,29 @@
 
 <FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="menu-bar" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.MenuController">
    <children>
-      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="pane" stylesheets="@application.css">
+      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css">
         <menus>
-          <Menu id="menu" mnemonicParsing="false" text="Accesso">
+          <Menu mnemonicParsing="false" text="Accesso">
             <items>
-              <MenuItem mnemonicParsing="false" text="Login" />
-                  <MenuItem mnemonicParsing="false" text="Chiudi" />
+              <MenuItem fx:id="menuLogin" mnemonicParsing="false" onAction="#doLogin" text="Login" />
+                  <MenuItem fx:id="menuFine" mnemonicParsing="false" onAction="#doChiudiProgramma" text="Chiudi" />
             </items>
           </Menu>
-          <Menu id="menu" mnemonicParsing="false" text="Supermercato">
+          <Menu mnemonicParsing="false" text="Supermercato">
             <items>
-              <MenuItem fx:id="diAggiungiSupermercato" mnemonicParsing="false" onAction="#doAggiungiSupermercato" text="Aggiungi" />
-                  <MenuItem mnemonicParsing="false" text="Visualizza" />
+              <MenuItem fx:id="menuAggiungiNegozio" mnemonicParsing="false" onAction="#doAggiungiNegozio" text="Aggiungi" />
+                  <MenuItem fx:id="menuVisualizzaNegozio" mnemonicParsing="false" onAction="#doVisuallizzaNegozio" text="Visualizza" />
             </items>
           </Menu>
-            <Menu id="menu" mnemonicParsing="false" text="Prodotto">
+            <Menu mnemonicParsing="false" text="Prodotto">
               <items>
-                <MenuItem mnemonicParsing="false" text="Aggiungi" />
-                  <MenuItem mnemonicParsing="false" text="Visualizza" />
+                <MenuItem fx:id="menuAggiungiProdotto" mnemonicParsing="false" onAction="#doAggiungiProdotto" text="Aggiungi" />
+                  <MenuItem fx:id="menuVisualizzaProdotto" mnemonicParsing="false" onAction="#doVisualizzaProdotto" text="Visualizza" />
               </items>
             </Menu>
-          <Menu id="menu" mnemonicParsing="false" text="Aiuto">
+          <Menu mnemonicParsing="false" text="Aiuto">
             <items>
-              <MenuItem mnemonicParsing="false" text="Informazioni" />
+              <MenuItem fx:id="menuInformazioni" mnemonicParsing="false" onAction="#doInformazioni" text="Informazioni" />
             </items>
           </Menu>
         </menus>

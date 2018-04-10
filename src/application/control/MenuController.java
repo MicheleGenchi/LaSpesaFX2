@@ -8,40 +8,100 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
-public class MenuController extends MainController {
+public class MenuController {
 
-	@FXML
-	private ResourceBundle resources;
+    private static MainController mainController;
 
 	@FXML
-	private URL location;
+    private ResourceBundle resources;
 
-	@FXML
-	private MenuItem diAggiungiSupermercato;
+    @FXML
+    private URL location;
 
-	@FXML
-	void doAggiungiSupermercato(ActionEvent event) {
+    @FXML
+    private MenuItem menuLogin;
+
+    @FXML
+    private MenuItem menuFine;
+
+    @FXML
+    private MenuItem menuAggiungiNegozio;
+
+    @FXML
+    private MenuItem menuVisualizzaNegozio;
+
+    @FXML
+    private MenuItem menuAggiungiProdotto;
+
+    @FXML
+    private MenuItem menuVisualizzaProdotto;
+
+    @FXML
+    private MenuItem menuInformazioni;
+
+    @FXML
+    void doAggiungiNegozio(ActionEvent event) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UpdateSuperMercato.fxml"));
 
 		Node viewAggiungiSupermercato = null;
 		try {
 			viewAggiungiSupermercato = loader.load();
 			viewAggiungiSupermercato.getStyleClass().add(getClass().getResource("../view/application.css").toExternalForm());
-			System.out.println(super.toString());
-			super.set(viewAggiungiSupermercato);
+			mainController.getBorderPane().setCenter(viewAggiungiSupermercato);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.err.println("viewAggiungiSupermercato = (VBox) loader.load();");
 			e.printStackTrace();
 		}
-	}
+    }
 
-	@FXML
-	void initialize() {
-		assert diAggiungiSupermercato != null : "fx:id=\"diAggiungiSupermercato\" was not injected: check your FXML file 'menu.fxml'.";
+    @FXML
+    void doAggiungiProdotto(ActionEvent event) {
 
+    }
+
+    @FXML
+    void doChiudiProgramma(ActionEvent event) {
+
+    }
+
+    @FXML
+    void doInformazioni(ActionEvent event) {
+
+    }
+
+    @FXML
+    void doLogin(ActionEvent event) {
+
+    }
+
+    @FXML
+    void doVisualizzaProdotto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void doVisuallizzaNegozio(ActionEvent event) {
+
+    }
+
+    @FXML
+    void initialize() {
+        assert menuLogin != null : "fx:id=\"menuLogin\" was not injected: check your FXML file 'menu.fxml'.";
+        assert menuFine != null : "fx:id=\"menuFine\" was not injected: check your FXML file 'menu.fxml'.";
+        assert menuAggiungiNegozio != null : "fx:id=\"menuAggiungiNegozio\" was not injected: check your FXML file 'menu.fxml'.";
+        assert menuVisualizzaNegozio != null : "fx:id=\"menuVisualizzaNegozio\" was not injected: check your FXML file 'menu.fxml'.";
+        assert menuAggiungiProdotto != null : "fx:id=\"menuAggiungiProdotto\" was not injected: check your FXML file 'menu.fxml'.";
+        assert menuVisualizzaProdotto != null : "fx:id=\"menuVisualizzaProdotto\" was not injected: check your FXML file 'menu.fxml'.";
+        assert menuInformazioni != null : "fx:id=\"menuInformazioni\" was not injected: check your FXML file 'menu.fxml'.";
+
+    }
+
+	public static void injection(MainController mainController) {
+		// TODO Auto-generated method stub
+		MenuController.mainController=mainController;
 	}
 }
+
+

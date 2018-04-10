@@ -24,6 +24,7 @@ public class Test {
 
 		ModelListProdotto lista2 = new ModelListProdotto((List<Prodotto>) getListaDAO(new DAOProdotto()));
 		lista2.getListE().forEach(System.out::print);
+		
 		String negozioDaCercare="Auchan";
 		System.out.printf("\n\n\nCerca il negozio (%3s)\t->\t",negozioDaCercare);
 		int idNegozio=lista.cerca(negozioDaCercare);

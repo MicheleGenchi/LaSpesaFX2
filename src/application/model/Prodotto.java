@@ -44,6 +44,20 @@ public class Prodotto {
 		modelProdotto.getNomeSuperMercato()); 
 	}
 
+	
+	public void setFromModel(ModelProdotto prodotto) {
+		setIdprodotto(prodotto.getIdprodotto());
+		setNome(prodotto.getNome());
+		setDescrizione(prodotto.getDescrizione());
+		setMarca(prodotto.getMarca());
+		setContenitore(prodotto.getContenitore());
+		setPeso(prodotto.getPeso());
+		setQuantità(prodotto.getQuantità());
+		setPrezzo(prodotto.getPrezzo());
+	    setNegozio_idNegozio(prodotto.getNegozio_idNegozio());
+	    setNomeSuperMercato(prodotto.getNomeSuperMercato());
+	}
+	
 	/**
 	 * @return the idprodotto
 	 */

@@ -49,6 +49,7 @@ public class MainController {
         assert mnuLogin != null : "fx:id=\"mnuLogin\" was not injected: check your FXML file 'Main.fxml'.";
         assert mnuChiudi != null : "fx:id=\"mnuChiudi\" was not injected: check your FXML file 'Main.fxml'.";
         assert mnuInformazioni != null : "fx:id=\"mnuInformazioni\" was not injected: check your FXML file 'Main.fxml'.";
+        MenuController.injection(this);
     }
 
 	/**
@@ -64,11 +65,5 @@ public class MainController {
 	public void setBorderPane(BorderPane borderPane) {
 		this.borderPane = borderPane;
 	}
-
-	public void set(Node view) {
-		// TODO Auto-generated method stub
-		borderPane.setCenter(view);
-	}
-
 }
 

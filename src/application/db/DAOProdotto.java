@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import application.model.ListModel;
 import application.model.Prodotto;
 
 public class DAOProdotto extends DAO<Prodotto> {
@@ -13,7 +15,12 @@ public class DAOProdotto extends DAO<Prodotto> {
 	}
 	
 	@Override
-	public int leggi() {
+	public String toString() {
+		return  "Tabella Prodotto";
+	}
+
+	@Override
+	public int leggi(ListModel<Prodotto> dati) {
 		int conta=0;
 		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
 				"	from spesa2.prodotto, spesa2.negozio" + 
@@ -34,7 +41,7 @@ public class DAOProdotto extends DAO<Prodotto> {
 						rs.getInt("negozio_idNegozio"),
 						rs.getString("negozio.nome"));
 				conta++;
-				dati.add(record);
+				dati.aggiungi(record);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,13 +50,13 @@ public class DAOProdotto extends DAO<Prodotto> {
 	}
 
 	@Override
-	public int scrivi() {
+	public int scrivi(ListModel<Prodotto> dati) {
 		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio.idNegozio) "
 				+ "value (%1,%2,%3,%4,%5,%6,%7);";
 		int conta = 0;
 		try {
 			PreparedStatement st = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-			for (Prodotto record : dati) {
+			for (Prodotto record : dati.getListE()) {
 				st.setString(1, record.getNome());
 				st.setString(2, record.getDescrizione());
 				st.setString(3, record.getMarca());
@@ -65,10 +72,5 @@ public class DAOProdotto extends DAO<Prodotto> {
 			e.printStackTrace();
 		}
 		return conta;
-	}
-	
-	@Override
-	public String toString() {
-		return  "Tabella Prodotto";
 	}
 }

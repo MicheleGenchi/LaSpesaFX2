@@ -1,10 +1,17 @@
 package application.control;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import application.db.DAO;
+import application.db.DAOProdotto;
+import application.db.DAOSupermercati;
+import application.model.ModelListNegozio;
+import application.model.ModelListProdotto;
+import application.model.SuperMercato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
@@ -43,6 +50,9 @@ public class MainController {
 
     }
 
+    ModelListNegozio listaNegozi;
+    ModelListProdotto listaProdotti;
+    
     @FXML
     void initialize() {
         assert borderPane != null : "fx:id=\"borderPane\" was not injected: check your FXML file 'Main.fxml'.";
@@ -50,6 +60,13 @@ public class MainController {
         assert mnuChiudi != null : "fx:id=\"mnuChiudi\" was not injected: check your FXML file 'Main.fxml'.";
         assert mnuInformazioni != null : "fx:id=\"mnuInformazioni\" was not injected: check your FXML file 'Main.fxml'.";
         MenuController.injection(this);
+        
+        DAOSupermercati dao1=new DAOSupermercati();
+        listaNegozi=new ModelListNegozio();
+        dao1.leggi(listaNegozi);
+        DAOProdotto dao2=new DAOProdotto();
+        listaProdotti=new ModelListProdotto();
+        dao2.leggi(listaProdotti);
     }
 
 	/**
@@ -65,5 +82,6 @@ public class MainController {
 	public void setBorderPane(BorderPane borderPane) {
 		this.borderPane = borderPane;
 	}
+	
 }
 

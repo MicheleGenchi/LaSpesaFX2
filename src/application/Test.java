@@ -1,14 +1,10 @@
 package application;
 
-import java.util.List;
-
 import application.db.DAO;
 import application.db.DAOProdotto;
 import application.db.DAOSupermercati;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
-import application.model.Prodotto;
-import application.model.SuperMercato;
 
 public class Test {
 
@@ -19,10 +15,15 @@ public class Test {
 
 	private void run() {
 		DAOSupermercati dao=new DAOSupermercati();
-		ModelListNegozio lista = new ModelListNegozio((List<SuperMercato>) getListaDAO(dao));
+		ModelListNegozio lista = new ModelListNegozio();
+		dao.leggi(lista);
+		System.out.println(dao);
 		lista.getListE().forEach(System.out::print);
 
-		ModelListProdotto lista2 = new ModelListProdotto((List<Prodotto>) getListaDAO(new DAOProdotto()));
+		DAOProdotto dao2=new DAOProdotto();
+		ModelListProdotto lista2 = new ModelListProdotto();
+		dao2.leggi(lista2);
+		System.out.println(dao2);
 		lista2.getListE().forEach(System.out::print);
 		
 		String negozioDaCercare="Auchan";
@@ -31,12 +32,5 @@ public class Test {
 		System.out.printf("key = %2s\n",idNegozio);
 		dao.getProdotti(idNegozio).forEach(System.out::print);
 		DAO.chiudi();
-	}
-
-	private List<?> getListaDAO(DAO<?> dao) {
-		int conta = dao.leggi();
-		System.out.printf(dao + "\n%-3d%10s\n", conta, conta == 1 ? " record letto" : " records letti");
-		List<?> lista = dao.getDati();
-		return lista;
 	}
 }

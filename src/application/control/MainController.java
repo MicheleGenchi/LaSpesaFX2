@@ -58,26 +58,14 @@ public class MainController implements Initializable {
 	private ModelListNegozio listaNegozi;
 	private ModelListProdotto listaProdotti;
 
-	@FXML
+/*	@FXML
 	void initialize() {
 		assert borderPane != null : "fx:id=\"borderPane\" was not injected: check your FXML file 'Main.fxml'.";
 		assert mnuLogin != null : "fx:id=\"mnuLogin\" was not injected: check your FXML file 'Main.fxml'.";
 		assert mnuChiudi != null : "fx:id=\"mnuChiudi\" was not injected: check your FXML file 'Main.fxml'.";
 		assert mnuInformazioni != null : "fx:id=\"mnuInformazioni\" was not injected: check your FXML file 'Main.fxml'.";
-		
-		DAOSupermercati dao1 = new DAOSupermercati();
-		listaNegozi = new ModelListNegozio();
-		dao1.leggi(listaNegozi);
-		DAOProdotto dao2 = new DAOProdotto();
-		listaProdotti = new ModelListProdotto();
-		dao2.leggi(listaProdotti);
-
-		boolean b1=listaNegozi.changeProperty().getValue();
-		boolean b2=listaProdotti.changeProperty().getValue();
-		System.out.println(b1+"\t"+b2);
-		buttonSalva.disableProperty().bind(Bindings.not(
-				listaNegozi.changeProperty().or(listaProdotti.changeProperty())));
 	}
+	*/
 
 	/**
 	 * @return the borderPane
@@ -126,23 +114,36 @@ public class MainController implements Initializable {
 
 	@FXML
 	void doSalva(ActionEvent event) {
-//		listaNegozi.save();
-//		listaProdotti.save();
 		Alert alert = new Alert(AlertType.INFORMATION, "I dati sono stati scritti sul database");
 		alert.show();
-		listaNegozi.setChange(false);
-		listaProdotti.setChange(false);
 		boolean b1=listaNegozi.changeProperty().getValue();
 		boolean b2=listaProdotti.changeProperty().getValue();
 		System.out.println(b1+"\t"+b2);
-	}
+		if (b1==true) {
+			listaNegozi.save();
+		}
+		if (b2=true) {
+			listaProdotti.save();
+		}
+ 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 
 		MenuController.injection(this);
+		DAOSupermercati dao1 = new DAOSupermercati();
+		listaNegozi = new ModelListNegozio();
+		dao1.leggi(listaNegozi);
+		DAOProdotto dao2 = new DAOProdotto();
+		listaProdotti = new ModelListProdotto();
+		dao2.leggi(listaProdotti);
 
+		boolean b1=listaNegozi.changeProperty().getValue();
+		boolean b2=listaProdotti.changeProperty().getValue();
+		System.out.println(b1+"\t"+b2);
+		buttonSalva.disableProperty().bind(Bindings.not(
+				listaNegozi.changeProperty().or(listaProdotti.changeProperty())));
 
 	}
 }

@@ -1,32 +1,25 @@
 package application.model;
 
-import java.util.ArrayList;
 import java.util.List;
-import application.db.DAOProdotto;
-import application.db.DAOSupermercati;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public abstract class ListModel<E>  {
-	private E obj;
 	protected List<E> listE; 
 	protected ObservableList<E> oListE;
 	protected BooleanProperty change=new SimpleBooleanProperty(false);
 	
 	public ListModel() {
-		listE=new ArrayList<>();
-		setChange(false);
+
 	}
 	
 	public boolean aggiungi(E e) {
-		setChange(true);
 		return listE.add(e);
 	}
 	
 	public boolean delete(E e) {
-		setChange(true);
 		return listE.remove(e);
 	}
 	

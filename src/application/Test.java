@@ -14,7 +14,7 @@ public class Test {
 	}
 
 	private void run() {
-		DAOSupermercati dao=new DAOSupermercati();
+	/*	DAOSupermercati dao=new DAOSupermercati();
 		ModelListNegozio lista = new ModelListNegozio();
 		dao.leggi(lista);
 		System.out.println(dao);
@@ -32,5 +32,6 @@ public class Test {
 		System.out.printf("key = %2s\n",idNegozio);
 		dao.getProdotti(idNegozio).forEach(System.out::print);
 		DAO.chiudi();
+		*/
 	}
 }

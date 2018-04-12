@@ -34,6 +34,7 @@ public class UpdateSupermercatoController implements Initializable {
     	SuperMercato superMercato=new SuperMercato();
     	superMercato.setFromModel(model);
     	MenuController.mainController.getListaNegozi().aggiungi(superMercato);
+    	MenuController.mainController.getListaNegozi().setChange(true);
     }
 
     @FXML

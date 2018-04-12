@@ -1,8 +1,8 @@
 package application;
 
 import application.db.DAO;
+import application.db.DAONegozio;
 import application.db.DAOProdotto;
-import application.db.DAOSupermercati;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
 
@@ -14,7 +14,7 @@ public class Test {
 	}
 
 	private void run() {
-	/*	DAOSupermercati dao=new DAOSupermercati();
+		DAONegozio dao=new DAONegozio();
 		ModelListNegozio lista = new ModelListNegozio();
 		dao.leggi(lista);
 		System.out.println(dao);
@@ -32,6 +32,6 @@ public class Test {
 		System.out.printf("key = %2s\n",idNegozio);
 		dao.getProdotti(idNegozio).forEach(System.out::print);
 		DAO.chiudi();
-		*/
+		
 	}
 }

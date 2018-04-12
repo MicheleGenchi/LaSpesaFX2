@@ -5,20 +5,20 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ModelSuperMercato {
+public class ModelNegozio  {
 	private IntegerProperty key=new SimpleIntegerProperty();
 	private StringProperty nome=new SimpleStringProperty();
 	
-	public ModelSuperMercato(int key, String nome) {
+	public ModelNegozio(int key, String nome) {
 		setKey(key);
 		setNome(nome);
 	}
 
-	public ModelSuperMercato(SuperMercato superMercato) {
+	public ModelNegozio(Negozio superMercato) {
 		this(superMercato.getKey(),superMercato.getNome());
 	}
 	
-	public ModelSuperMercato() {
+	public ModelNegozio() {
 		this(0, "");
 	}
 

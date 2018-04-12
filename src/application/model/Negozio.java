@@ -2,21 +2,21 @@ package application.model;
 
 import java.util.List;
 
-public class SuperMercato {
+public class Negozio {
 	private int key;
 	private String nome;
 	private List<Prodotto> listaProdotti;
 	
-	public SuperMercato(int key, String nome) {
+	public Negozio(int key, String nome) {
 		setKey(key);
 		setNome(nome);
 	}
 
-	public SuperMercato() {
+	public Negozio() {
 		this(0, "");
 	}
 	
-	public void setFromModel(ModelSuperMercato supermercato) {
+	public void setFromModel(ModelNegozio supermercato) {
 		setKey(supermercato.getKey());
 		setNome(supermercato.getNome());
 	}
@@ -98,10 +98,10 @@ public class SuperMercato {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof SuperMercato)) {
+		if (!(obj instanceof Negozio)) {
 			return false;
 		}
-		SuperMercato other = (SuperMercato) obj;
+		Negozio other = (Negozio) obj;
 		if (nome == null) {
 			if (other.nome != null) {
 				return false;

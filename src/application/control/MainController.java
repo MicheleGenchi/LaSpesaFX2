@@ -3,8 +3,6 @@ package application.control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.db.DAOProdotto;
-import application.db.DAOSupermercati;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
 import javafx.beans.binding.Bindings;
@@ -132,18 +130,13 @@ public class MainController implements Initializable {
 		// TODO Auto-generated method stub
 
 		MenuController.injection(this);
-		DAOSupermercati dao1 = new DAOSupermercati();
 		listaNegozi = new ModelListNegozio();
-		dao1.leggi(listaNegozi);
-		DAOProdotto dao2 = new DAOProdotto();
 		listaProdotti = new ModelListProdotto();
-		dao2.leggi(listaProdotti);
 
 		boolean b1=listaNegozi.changeProperty().getValue();
 		boolean b2=listaProdotti.changeProperty().getValue();
 		System.out.println(b1+"\t"+b2);
 		buttonSalva.disableProperty().bind(Bindings.not(
 				listaNegozi.changeProperty().or(listaProdotti.changeProperty())));
-
 	}
 }

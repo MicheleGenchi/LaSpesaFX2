@@ -3,13 +3,15 @@ package application.control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.model.ModelSuperMercato;
-import application.model.SuperMercato;
+import application.db.DAONegozio;
+import application.model.ModelNegozio;
+import application.model.Negozio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.util.converter.NumberStringConverter;
 
 public class UpdateSupermercatoController implements Initializable {
 	
@@ -28,10 +30,10 @@ public class UpdateSupermercatoController implements Initializable {
     @FXML
     private Button btnAggiungiSupermercato;
 
-    ModelSuperMercato model; 
+    ModelNegozio model; 
     @FXML
     void doAggiungiSupermercato(ActionEvent event) {
-    	SuperMercato superMercato=new SuperMercato();
+    	Negozio superMercato=new Negozio();
     	superMercato.setFromModel(model);
     	MenuController.mainController.getListaNegozi().aggiungi(superMercato);
     	MenuController.mainController.getListaNegozi().setChange(true);
@@ -46,8 +48,9 @@ public class UpdateSupermercatoController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-        model=new ModelSuperMercato();
-        textidNegozio.textProperty().bind(model.keyProperty().asString());
+        model=new ModelNegozio();
+        model.setKey(new DAONegozio().lastRecord()+1);
+        textidNegozio.textProperty().bindBidirectional(model.keyProperty(),new NumberStringConverter());
         textNomeSupermercato.textProperty().bindBidirectional(model.nomeProperty());
 	}
 }

@@ -1,7 +1,9 @@
 package application.db;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import application.model.ListModel;
 
@@ -27,7 +29,10 @@ public abstract class DAO<e> {
 	 * @return int numero di record aggiornati o inseriti
 	 */
 	public abstract int scrivi(ListModel<e> list);
-
+	
+	public abstract int lastRecord();
+	
+	
 	@Override
 	public abstract String toString();
 

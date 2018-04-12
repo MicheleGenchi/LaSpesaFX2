@@ -6,13 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import application.model.ListModel;
+import application.model.Negozio;
 import application.model.Prodotto;
-import application.model.SuperMercato;
 
-public class DAOSupermercati extends DAO<SuperMercato> {
+public class DAONegozio extends DAO<Negozio> {
 
-	public DAOSupermercati() {
+	public DAONegozio() {
 
 	}
 
@@ -23,13 +24,13 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 	}
 
 	@Override
-	public int leggi(ListModel<SuperMercato> dati) {
+	public int leggi(ListModel<Negozio> dati) {
 		int conta = 0;
 		String SQL = "select Negozio.idNegozio, Negozio.nome  from spesa2.Negozio";
 		try (PreparedStatement st = conn.prepareStatement(SQL)) {
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
-				SuperMercato record = new SuperMercato(rs.getInt("idNegozio"), rs.getString("nome"));
+				Negozio record = new Negozio(rs.getInt("idNegozio"), rs.getString("nome"));
 				conta++;
 				record.setListaProdotti(getProdotti(record.getKey()));
 				dati.aggiungi(record);
@@ -41,17 +42,16 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 	}
 
 	@Override
-	public int scrivi(ListModel<SuperMercato> dati) {
+	public int scrivi(ListModel<Negozio> model) {
 		String SQL = "Insert into Spesa2.negozio (idNegozio, nome) values (?,?);";
 		int conta = 0;
 		try {
-			PreparedStatement st = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-			for (SuperMercato record : dati.getListE()) {
-				ResultSet rs = st.getGeneratedKeys();  
-				int key = rs.next() ? rs.getInt(1) : 0;
-				st.setInt(1, key);
+			PreparedStatement st = conn.prepareStatement(SQL);
+			for (Negozio record : model.getListE()) {
+				st.setInt(1, record.getKey());
 				st.setString(2, record.getNome());
 				st.executeUpdate();
+				conta++;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,6 +80,22 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 			e.printStackTrace();
 		}
 		return lista;
+	}
+
+	@Override
+	public  int lastRecord() {
+		int conta=0;
+		final String SQL = "Select count(*) from Negozio";
+		try {
+			Statement st=conn.createStatement();
+			ResultSet rs=st.executeQuery(SQL);
+			rs.next();
+			conta=rs.getInt(1);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return conta;
 	}
 
 }

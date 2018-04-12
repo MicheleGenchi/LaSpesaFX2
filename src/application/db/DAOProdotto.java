@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.model.ListModel;
+import application.model.ModelListProdotto;
 import application.model.Prodotto;
 
 public class DAOProdotto extends DAO<Prodotto> {
@@ -70,6 +71,21 @@ public class DAOProdotto extends DAO<Prodotto> {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		return conta;
+	}
+
+	@Override
+	public  int lastRecord() {
+		int conta=0;
+		final String SQL = "Select count(*) from Prodotto";
+		try {
+			Statement st=conn.createStatement();
+			ResultSet rs=st.executeQuery(SQL);
+			conta=rs.getInt(1);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		return conta;
 	}

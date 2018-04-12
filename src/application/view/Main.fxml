@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane fx:id="borderPane" prefHeight="400.0" prefWidth="600.0" styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.MainController">
    <top>
       <fx:include source="menu.fxml" />
    </top>
+   <bottom>
+      <Button fx:id="buttonSalva" mnemonicParsing="false" onAction="#doSalva" text="Salva Database" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

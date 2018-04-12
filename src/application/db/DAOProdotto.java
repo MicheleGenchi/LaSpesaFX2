@@ -52,7 +52,7 @@ public class DAOProdotto extends DAO<Prodotto> {
 	@Override
 	public int scrivi(ListModel<Prodotto> dati) {
 		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio.idNegozio) "
-				+ "value (%1,%2,%3,%4,%5,%6,%7);";
+				+ "value (?,?,?,?,?,?,?,?);";
 		int conta = 0;
 		try {
 			PreparedStatement st = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);

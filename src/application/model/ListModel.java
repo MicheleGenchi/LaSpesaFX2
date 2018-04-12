@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import application.db.DAOProdotto;
 import application.db.DAOSupermercati;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,19 +13,20 @@ public abstract class ListModel<E>  {
 	private E obj;
 	protected List<E> listE; 
 	protected ObservableList<E> oListE;
-	protected boolean change;
+	protected BooleanProperty change=new SimpleBooleanProperty(false);
 	
 	public ListModel() {
 		listE=new ArrayList<>();
+		setChange(false);
 	}
 	
 	public boolean aggiungi(E e) {
-		change=true;
+		setChange(true);
 		return listE.add(e);
 	}
 	
 	public boolean delete(E e) {
-		change=true;
+		setChange(true);
 		return listE.remove(e);
 	}
 	
@@ -45,23 +48,17 @@ public abstract class ListModel<E>  {
 		return oListE;
 	}
 
-	protected void save() {
-		if (obj instanceof DAOSupermercati) {
-			DAOSupermercati dao=new DAOSupermercati();
-			dao.scrivi((ListModel<SuperMercato>) this);
-		}
-		if (obj instanceof DAOProdotto) {
-			DAOProdotto dao=new DAOProdotto();
-			dao.scrivi((ListModel<Prodotto>) this);
-		}
-		change=false;
-	}
+	protected abstract void save();
 	
-	public boolean isChange() {
-		return change;
+	public final BooleanProperty changeProperty() {
+		return this.change;
 	}
 
-	public void setChange(boolean change) {
-		this.change = change;
+	public final boolean isChange() {
+		return this.changeProperty().get();
+	}
+
+	public final void setChange(final boolean change) {
+		this.changeProperty().set(change);
 	}
 }

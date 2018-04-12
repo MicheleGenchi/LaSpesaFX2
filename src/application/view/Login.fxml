@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="pane" stylesheets="@application.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label id="titolo" stylesheets="@application.css" text="Login" />
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <VBox styleClass="vbox" stylesheets="@application.css">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="vbox" stylesheets="@application.css">
-               <children>
-                  <Label stylesheets="@application.css" text="Utente" />
-                  <Label stylesheets="@application.css" text="Password" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="vbox" stylesheets="@application.css">
-               <children>
-                  <TextField styleClass="text" stylesheets="@application.css" />
-                  <TextField styleClass="text" stylesheets="@application.css" />
-               </children>
-            </VBox>
+            <Label stylesheets="@application.css" text="Utente" />
+            <TextField styleClass="text" stylesheets="@application.css" />
          </children>
-      </HBox>
+      </VBox>
+      <VBox styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <Label stylesheets="@application.css" text="Password" />
+            <TextField styleClass="text" stylesheets="@application.css" />
+         </children>
+      </VBox>
+      <AnchorPane>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </VBox.margin>
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@application.css" text="Button" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
+   <styleClass>
+      <String fx:value="pane" />
+      <String fx:value="vbox" />
+   </styleClass>
 </VBox>

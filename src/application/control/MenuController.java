@@ -11,7 +11,7 @@ import javafx.scene.control.MenuItem;
 
 public class MenuController {
 
-    private static MainController mainController;
+    static MainController mainController;
 
 	@FXML
     private ResourceBundle resources;

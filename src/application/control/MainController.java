@@ -10,13 +10,14 @@ import application.model.ModelListProdotto;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
-public class MainController {
+public class MainController implements Initializable {
 
 	@FXML
 	private ResourceBundle resources;
@@ -64,14 +65,13 @@ public class MainController {
 		assert mnuChiudi != null : "fx:id=\"mnuChiudi\" was not injected: check your FXML file 'Main.fxml'.";
 		assert mnuInformazioni != null : "fx:id=\"mnuInformazioni\" was not injected: check your FXML file 'Main.fxml'.";
 		
-		MenuController.injection(this);
-
 		DAOSupermercati dao1 = new DAOSupermercati();
 		listaNegozi = new ModelListNegozio();
 		dao1.leggi(listaNegozi);
 		DAOProdotto dao2 = new DAOProdotto();
 		listaProdotti = new ModelListProdotto();
 		dao2.leggi(listaProdotti);
+
 		boolean b1=listaNegozi.changeProperty().getValue();
 		boolean b2=listaProdotti.changeProperty().getValue();
 		System.out.println(b1+"\t"+b2);
@@ -137,4 +137,12 @@ public class MainController {
 		System.out.println(b1+"\t"+b2);
 	}
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+
+		MenuController.injection(this);
+
+
+	}
 }

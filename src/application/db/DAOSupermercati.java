@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import application.model.ListModel;
 import application.model.Prodotto;
 import application.model.SuperMercato;
@@ -43,15 +42,16 @@ public class DAOSupermercati extends DAO<SuperMercato> {
 
 	@Override
 	public int scrivi(ListModel<SuperMercato> dati) {
-		String SQL = "Insert into Spesa2.negozio (nome) values (?);";
+		String SQL = "Insert into Spesa2.negozio (idNegozio, nome) values (?,?);";
 		int conta = 0;
 		try {
 			PreparedStatement st = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			for (SuperMercato record : dati.getListE()) {
-				st.setString(1, record.getNome());
-				st.executeUpdate();
 				ResultSet rs = st.getGeneratedKeys();  
 				int key = rs.next() ? rs.getInt(1) : 0;
+				st.setInt(1, key);
+				st.setString(2, record.getNome());
+				st.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

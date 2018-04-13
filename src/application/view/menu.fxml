@@ -15,7 +15,7 @@
                   <MenuItem fx:id="menuFine" mnemonicParsing="false" onAction="#doChiudiProgramma" text="Chiudi" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Supermercato">
+          <Menu mnemonicParsing="false" text="Negozio">
             <items>
               <MenuItem fx:id="menuAggiungiNegozio" mnemonicParsing="false" onAction="#doAggiungiNegozio" text="Aggiungi" />
                   <MenuItem fx:id="menuVisualizzaNegozio" mnemonicParsing="false" onAction="#doVisuallizzaNegozio" text="Visualizza" />

@@ -15,6 +15,10 @@ public abstract class ListModel<E>  {
 
 	}
 	
+	public void clean() {
+		listE.clear();
+	}
+	
 	public boolean aggiungi(E e) {
 		return listE.add(e);
 	}

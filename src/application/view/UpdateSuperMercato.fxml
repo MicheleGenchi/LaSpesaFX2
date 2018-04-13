@@ -18,12 +18,12 @@
       <AnchorPane>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="12.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="vbox" stylesheets="@application.css" text="Nome" AnchorPane.leftAnchor="20.0" />
-            <TextField fx:id="textNomeSupermercato" layoutX="74.0" layoutY="12.0" styleClass="text" stylesheets="@application.css" AnchorPane.leftAnchor="100.0" />
+            <TextField fx:id="textNomeNegozio" layoutX="74.0" layoutY="12.0" styleClass="text" stylesheets="@application.css" AnchorPane.leftAnchor="100.0" />
          </children>
       </AnchorPane>
       <AnchorPane>
          <children>
-            <Button fx:id="btnAggiungiSupermercato" mnemonicParsing="false" onAction="#doAggiungiSupermercato" stylesheets="@application.css" text="Aggiungi" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="btnAggiungiNegozio" mnemonicParsing="false" onAction="#doAggiungiNegozio" stylesheets="@application.css" text="Aggiungi" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
    </children>

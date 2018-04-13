@@ -15,13 +15,13 @@ public class Test {
 
 	private void run() {
 		DAONegozio dao=new DAONegozio();
-		ModelListNegozio lista = new ModelListNegozio();
+		ModelListNegozio lista = ModelListNegozio.getInstance();
 		dao.leggi(lista);
 		System.out.println(dao);
 		lista.getListE().forEach(System.out::print);
 
 		DAOProdotto dao2=new DAOProdotto();
-		ModelListProdotto lista2 = new ModelListProdotto();
+		ModelListProdotto lista2 =  ModelListProdotto.getInstance();
 		dao2.leggi(lista2);
 		System.out.println(dao2);
 		lista2.getListE().forEach(System.out::print);

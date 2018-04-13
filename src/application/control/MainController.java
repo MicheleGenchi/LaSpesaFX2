@@ -130,8 +130,8 @@ public class MainController implements Initializable {
 		// TODO Auto-generated method stub
 
 		MenuController.injection(this);
-		listaNegozi = new ModelListNegozio();
-		listaProdotti = new ModelListProdotto();
+		listaNegozi = ModelListNegozio.getInstance();
+		listaProdotti = ModelListProdotto.getInstance();
 
 		boolean b1=listaNegozi.changeProperty().getValue();
 		boolean b2=listaProdotti.changeProperty().getValue();

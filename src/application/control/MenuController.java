@@ -42,7 +42,7 @@ public class MenuController {
 
     @FXML
     void doAggiungiNegozio(ActionEvent event) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UpdateSuperMercato.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UpdateNegozio.fxml"));
 
 		Node viewAggiungiSupermercato = null;
 		try {

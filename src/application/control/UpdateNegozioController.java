@@ -6,8 +6,6 @@ import java.util.ResourceBundle;
 import application.db.DAONegozio;
 import application.model.ModelNegozio;
 import application.model.Negozio;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 
-public class UpdateSupermercatoController implements Initializable {
+public class UpdateNegozioController implements Initializable {
 	
     @FXML
     private ResourceBundle resources;

@@ -35,10 +35,10 @@ public class UpdateNegozioController implements Initializable {
     ModelNegozio model; 
     @FXML
     void doAggiungiNegozio(ActionEvent event) {
-    	Negozio superMercato=new Negozio();
-    	superMercato.setFromModel(model);
+    	Negozio negozio=new Negozio();
+    	negozio.setFromModel(model);
     	MenuController.mainController.getListaNegozi().clean();
-    	MenuController.mainController.getListaNegozi().aggiungi(superMercato);
+    	MenuController.mainController.getListaNegozi().aggiungi(negozio);
     	MenuController.mainController.getListaNegozi().setChange(true);
     }
 

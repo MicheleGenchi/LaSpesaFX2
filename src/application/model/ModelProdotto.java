@@ -226,17 +226,6 @@ public class ModelProdotto {
 	public final void setMarca(final String marca) {
 		this.marcaProperty().set(marca);
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Prodotto [idprodotto=" + getIdprodotto() + ", nome=" + getNome() + ", descrizione=" + getDescrizione()
-				+ ", marca="+ getMarca() + ", contenitore=" + getContenitore() + ", peso=" + getPeso() + ", quantità=" + getQuantità() + ", prezzo=" + getPrezzo()
-				+ ", negozio_idNegozio=" + getNegozio_idNegozio() + ", nomeSuperMercato=" + getNomeSuperMercato() + "]";
-	}
 }
 
 

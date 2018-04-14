@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<VBox styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tableNegozio" prefHeight="200.0" prefWidth="200.0" styleClass="pane" stylesheets="@application.css">
+        <columns>
+          <TableColumn id="tableCol" fx:id="tableColId" prefWidth="75.0" text="idNegozio" />
+          <TableColumn id="tableCol" fx:id="tableColNome" prefWidth="75.0" text="Nome" />
+        </columns>
+      </TableView>
+   </children>
 </VBox>
-

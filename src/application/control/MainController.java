@@ -132,10 +132,6 @@ public class MainController implements Initializable {
 		MenuController.injection(this);
 		listaNegozi = ModelListNegozio.getInstance();
 		listaProdotti = ModelListProdotto.getInstance();
-
-		boolean b1=listaNegozi.changeProperty().getValue();
-		boolean b2=listaProdotti.changeProperty().getValue();
-		System.out.println(b1+"\t"+b2);
 		buttonSalva.disableProperty().bind(Bindings.not(
 				listaNegozi.changeProperty().or(listaProdotti.changeProperty())));
 	}

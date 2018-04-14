@@ -4,9 +4,15 @@
 	-fx-padding: 10px;
 }
 
+#tableCol {
+		-fx-background-color: black;
+		-fx-font-weight: bold;
+}
+
 #menu {
 		-fx-background-color: black;
-		-fx-text-fill: white ;
+		-fx-text-fill: white;
+		-fx-font-weight: bold;
 }
 
 .menu-bar {

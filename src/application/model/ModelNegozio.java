@@ -46,12 +46,4 @@ public class ModelNegozio  {
 		this.nomeProperty().set(nome);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]";
-	}
-
 }

@@ -16,16 +16,16 @@ public class Table<E>{
 	}
 	
 
-	public TableView<E> get(Class<E> recordType, ObservableList<E> data) {
+	public TableView<E> get(Class<E> negozio, ObservableList<E> observableList) {
 		TableView<E> table=new TableView<>();
 		List<TableColumn<E, String>> columns = new ArrayList<>();
-		Arrays.stream(recordType.getDeclaredFields()).forEach(e -> {
+		Arrays.stream(negozio.getDeclaredFields()).forEach(e -> {
 			TableColumn<E, String> currentColumn = new TableColumn<>(e.getName());
 			PropertyValueFactory<E, String> p = new PropertyValueFactory<>(e.getName());
 			currentColumn.setCellValueFactory(p);
 			columns.add(currentColumn);
 		});
-		table.setItems(data);
+		table.setItems(observableList);
 		table.getColumns().setAll(columns);
 		return table;
 	}

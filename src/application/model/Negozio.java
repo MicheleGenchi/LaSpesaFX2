@@ -5,7 +5,7 @@ import java.util.List;
 public class Negozio {
 	private int key;
 	private String nome;
-	private List<Prodotto> listaProdotti;
+	private List<Integer> listaIdProdotti;
 	
 	public Negozio(int key, String nome) {
 		setKey(key);
@@ -54,61 +54,14 @@ public class Negozio {
 	/**
 	 * @return the listaProdotti
 	 */
-	public List<Prodotto> getListaProdotti() {
-		return listaProdotti;
+	public List<Integer> getListaIdProdotti() {
+		return listaIdProdotti;
 	}
 
 	/**
 	 * @param listaProdotti the listaProdotti to set
 	 */
-	public void setListaProdotti(List<Prodotto> listaProdotti) {
-		this.listaProdotti = listaProdotti;
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+"\n"+
-				(getListaProdotti().size()==0?"Non ci sono prodotti in questo negozio":"I prodotti in questo negozio sono:\n"+ getListaProdotti())+"\n\n";
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Negozio)) {
-			return false;
-		}
-		Negozio other = (Negozio) obj;
-		if (nome == null) {
-			if (other.nome != null) {
-				return false;
-			}
-		} else if (!nome.equals(other.nome)) {
-			return false;
-		}
-		return true;
+	public void setListaIdProdotti(List<Integer> listaIdProdotti) {
+		this.listaIdProdotti = listaIdProdotti;
 	}
 }

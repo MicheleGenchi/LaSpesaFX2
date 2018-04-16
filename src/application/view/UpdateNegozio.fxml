@@ -8,7 +8,11 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.UpdateNegozioController">
    <children>
-      <Label id="titolo" alignment="CENTER" styleClass="hbox" stylesheets="@application.css" text="Aggiungi un supermercato" />
+      <AnchorPane styleClass="label" stylesheets="@application.css">
+         <children>
+            <Label id="titolo" alignment="CENTER" styleClass="hbox" stylesheets="@application.css" text="Aggiungi un negozio" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
       <AnchorPane>
          <children>
             <Label styleClass="vbox" stylesheets="@application.css" text="idNegozio" AnchorPane.leftAnchor="20.0" />

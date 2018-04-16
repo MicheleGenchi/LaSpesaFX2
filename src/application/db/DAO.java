@@ -26,7 +26,7 @@ public abstract class DAO<e> {
 	 * 
 	 * @return int numero di record aggiornati o inseriti
 	 */
-	public abstract int scrivi(ListModel<e> list);
+	public abstract int scrivi(ListModel<e> modello);
 	
 	public abstract int lastRecord();
 	
@@ -34,7 +34,7 @@ public abstract class DAO<e> {
 	@Override
 	public abstract String toString();
 
-	public static void chiudi() {
+	public void chiudi() {
 		try {
 			if (!conn.isClosed()) {
 				conn.close();
@@ -43,4 +43,5 @@ public abstract class DAO<e> {
 			System.out.println("Nessuna connessiona da chiudere");
 		}
 	}
+
 }

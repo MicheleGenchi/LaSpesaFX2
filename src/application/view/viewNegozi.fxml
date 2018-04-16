@@ -2,15 +2,11 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TableView fx:id="tableNegozio" prefHeight="200.0" prefWidth="200.0" styleClass="pane" stylesheets="@application.css">
-        <columns>
-          <TableColumn id="tableCol" fx:id="tableColId" prefWidth="75.0" text="idNegozio" />
-          <TableColumn id="tableCol" fx:id="tableColNome" prefWidth="75.0" text="Nome" />
-        </columns>
-      </TableView>
-   </children>
-</VBox>
+<TableView fx:id="tableNegozio" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.TableNegozioController">
+  <columns>
+    <TableColumn fx:id="colidNegozio" prefWidth="75.0" style="-fx-background-color: black;" text="idNegozio" />
+    <TableColumn fx:id="colNome" prefWidth="75.0" style="-fx-background-color: black;" text="Nome" />
+    <TableColumn fx:id="colIdProdotto" prefWidth="88.0" style="-fx-background-color: black;" text="idProdotto" />
+  </columns>
+</TableView>

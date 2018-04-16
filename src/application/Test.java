@@ -5,6 +5,7 @@ import application.db.DAONegozio;
 import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
+import application.model.Prodotto;
 
 public class Test {
 
@@ -30,8 +31,16 @@ public class Test {
 		System.out.printf("\n\n\nCerca il negozio (%3s)\t->\t",negozioDaCercare);
 		int idNegozio=lista.cerca(negozioDaCercare);
 		System.out.printf("key = %2s\n",idNegozio);
-		dao.getProdotti(idNegozio).forEach(System.out::print);
-		DAO.chiudi();
+		System.out.println("Prodotti venduti ");
+		dao.getIdProdotti(idNegozio).forEach(e -> {
+			Prodotto record=new Prodotto();
+			System.out.println((dao2.cerca(e, record)?	
+				(String.format("%-10s\t%-10s\t%-5s",record.getMarca(),record.getNome(),record.getPrezzo())):
+				"non ci sono prodotti"));
+		});
+		
+		dao.chiudi();
+		dao2.chiudi();
 		
 	}
 }

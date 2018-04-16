@@ -10,14 +10,13 @@ public class Prodotto {
 	private int quantità;
 	private float prezzo;
 	private int negozio_idNegozio; 
-	private String nomeSuperMercato;
 
 	public Prodotto() {
-		this(0, "", "", "", "", 0, 0, 0.0f,0,"");
+		this(0, "", "", "", "", 0, 0, 0.0f,0);
 	}
 
 	public Prodotto(int idprodotto, String nome, String descrizione, String marca, String contenitore, 
-			int peso, int quantità, float prezzo, int negozio_idNegozio, String nomeSuperMercato) {
+			int peso, int quantità, float prezzo, int negozio_idNegozio) {
 		this.idprodotto = idprodotto;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -27,7 +26,6 @@ public class Prodotto {
 		this.quantità = quantità;
 		this.prezzo = prezzo;
 	    this.negozio_idNegozio = negozio_idNegozio; 
-	    this.nomeSuperMercato = nomeSuperMercato;
 	}
 
 	public Prodotto(ModelProdotto modelProdotto) {
@@ -40,8 +38,7 @@ public class Prodotto {
 		modelProdotto.getPeso(),
 		modelProdotto.getQuantità(),
 		modelProdotto.getPrezzo(),
-		modelProdotto.getNegozio_idNegozio(),
-		modelProdotto.getNomeSuperMercato()); 
+		modelProdotto.getNegozio_idNegozio()); 
 	}
 
 	
@@ -55,7 +52,6 @@ public class Prodotto {
 		setQuantità(prodotto.getQuantità());
 		setPrezzo(prodotto.getPrezzo());
 	    setNegozio_idNegozio(prodotto.getNegozio_idNegozio());
-	    setNomeSuperMercato(prodotto.getNomeSuperMercato());
 	}
 	
 	/**
@@ -191,75 +187,6 @@ public class Prodotto {
 	 */
 	public void setNegozio_idNegozio(int negozio_idNegozio) {
 		this.negozio_idNegozio = negozio_idNegozio;
-	}
-
-	/**
-	 * @return the nomeSuperMercato
-	 */
-	public String getNomeSuperMercato() {
-		return nomeSuperMercato;
-	}
-
-	/**
-	 * @param nomeSuperMercato
-	 *            the nomeSuperMercato to set
-	 */
-	public void setNomeSuperMercato(String nomeSuperMercato) {
-		this.nomeSuperMercato = nomeSuperMercato;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Prodotto [idprodotto=" + idprodotto + ", nome=" + nome + ", descrizione=" + descrizione + ", marca="
-				+ marca + ", contenitore=" + contenitore + ", peso=" + peso + ", quantità=" + quantità + ", prezzo="
-				+ prezzo + ",\n negozio_idNegozio=" + negozio_idNegozio + ", nomeSuperMercato=" + nomeSuperMercato + "]";
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Prodotto)) {
-			return false;
-		}
-		Prodotto other = (Prodotto) obj;
-		if (marca == null) {
-			if (other.marca != null) {
-				return false;
-			}
-		} else if (!marca.equals(other.marca)) {
-			return false;
-		}
-		if (nome == null) {
-			if (other.nome != null) {
-				return false;
-			}
-		} else if (!nome.equals(other.nome)) {
-			return false;
-		}
-		return true;
 	}
 
 }

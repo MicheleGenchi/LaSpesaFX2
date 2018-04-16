@@ -127,7 +127,6 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 
 		MenuController.injection(this);
 		listaNegozi = ModelListNegozio.getInstance();

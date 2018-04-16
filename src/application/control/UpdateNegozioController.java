@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import application.db.DAONegozio;
 import application.model.ModelNegozio;
-import application.model.Negozio;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -35,8 +34,7 @@ public class UpdateNegozioController implements Initializable {
     ModelNegozio model; 
     @FXML
     void doAggiungiNegozio(ActionEvent event) {
-    	Negozio negozio=new Negozio();
-    	negozio.setFromModel(model);
+    	ModelNegozio negozio=new ModelNegozio();
     	MenuController.mainController.getListaNegozi().clean();
     	MenuController.mainController.getListaNegozi().aggiungi(negozio);
     	MenuController.mainController.getListaNegozi().setChange(true);
@@ -50,7 +48,6 @@ public class UpdateNegozioController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
         model=new ModelNegozio();
         model.setKey(new DAONegozio().lastRecord()+1);
         textidNegozio.textProperty().bindBidirectional(model.keyProperty(),new NumberStringConverter());

@@ -18,11 +18,10 @@ public class ModelProdotto {
 	private IntegerProperty quantità=new SimpleIntegerProperty();
 	private FloatProperty prezzo=new SimpleFloatProperty();
 	private IntegerProperty negozio_idNegozio=new SimpleIntegerProperty();
-	private StringProperty nomeSuperMercato=new SimpleStringProperty();
 	
 	public ModelProdotto(int idprodotto, String nome, String descrizione, String marca,
 			String contenitore, int peso, int quantità, float prezzo,
-			int negozio_idNegozio, String nomeSuperMercato) {
+			int negozio_idNegozio) {
 		setIdprodotto(idprodotto);
 		setNome(nome);
 		setDescrizione(descrizione);
@@ -32,7 +31,6 @@ public class ModelProdotto {
 		setQuantità(quantità);
 		setPrezzo(prezzo);
 		setNegozio_idNegozio(negozio_idNegozio);
-		setNomeSuperMercato(nomeSuperMercato);
 	}
 	
 	public ModelProdotto(Prodotto prodotto) {
@@ -44,12 +42,11 @@ public class ModelProdotto {
 				prodotto.getPeso(),
 				prodotto.getQuantità(),
 				prodotto.getPrezzo(),
-				prodotto.getNegozio_idNegozio(),
-				prodotto.getNomeSuperMercato());
+				prodotto.getNegozio_idNegozio());
 	}
 	
 	public ModelProdotto() {
-		this(0, "", "", "", "", 0, 0, 0.0f,0,"");
+		this(0, "", "", "", "", 0, 0, 0.0f,0);
 	}
 
 	public final IntegerProperty idprodottoProperty() {
@@ -194,24 +191,7 @@ public class ModelProdotto {
 	}
 
 
-	public final StringProperty nomeSuperMercatoProperty() {
-		return this.nomeSuperMercato;
-	}
-	
-
-
-	public final String getNomeSuperMercato() {
-		return this.nomeSuperMercatoProperty().get();
-	}
-	
-
-
-	public final void setNomeSuperMercato(final String nomeSuperMercato) {
-		this.nomeSuperMercatoProperty().set(nomeSuperMercato);
-	}
-
-
-		public final StringProperty marcaProperty() {
+	public final StringProperty marcaProperty() {
 		return this.marca;
 	}
 	
@@ -225,6 +205,16 @@ public class ModelProdotto {
 
 	public final void setMarca(final String marca) {
 		this.marcaProperty().set(marca);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Prodotto [idprodotto=" + idprodotto + ", nome=" + nome + ", descrizione=" + descrizione + ", marca="
+				+ marca + ", contenitore=" + contenitore + ", peso=" + peso + ", quantità=" + quantità + ", prezzo="
+				+ prezzo + ",\n negozio_idNegozio=" + negozio_idNegozio + "]\n";
 	}
 }
 

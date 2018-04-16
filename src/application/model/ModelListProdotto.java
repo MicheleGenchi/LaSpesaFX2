@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import application.db.DAOProdotto;
 
-public class ModelListProdotto extends ListModel<Prodotto> {
+public class ModelListProdotto extends ListModel<ModelProdotto> {
 	private static ModelListProdotto instance;
-	public ModelListProdotto() {
+	
+	private ModelListProdotto() {
 		listE=new ArrayList<>();
 	}
 	
@@ -25,7 +26,7 @@ public class ModelListProdotto extends ListModel<Prodotto> {
 	@Override
 	public void save() {
 		DAOProdotto dao=new DAOProdotto();
-		dao.scrivi((ListModel<Prodotto>) this);
+		dao.scrivi(this);
 		setChange(false);
 	}
 }

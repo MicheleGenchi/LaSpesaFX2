@@ -42,7 +42,7 @@ public abstract class ListModel<E>  {
 	}
 
 	public ObservableList<E> getoListE() {
-		return oListE;
+		return FXCollections.observableList(listE);
 	}
 
 	protected abstract void save();

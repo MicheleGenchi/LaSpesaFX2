@@ -1,6 +1,5 @@
  package application.db;
 
-import java.beans.Beans;
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

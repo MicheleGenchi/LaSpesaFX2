@@ -89,7 +89,7 @@ public class MenuController {
 
     @FXML
     void doVisuallizzaNegozio(ActionEvent event) {
-    	/*
+    	
     	Class<ModelNegozio> negozio=ModelNegozio.class;
     	DAONegozio dao=new DAONegozio();
     	ModelListNegozio dati = ModelListNegozio.getInstance();
@@ -100,7 +100,7 @@ public class MenuController {
     	//dati.setoListE(dati.getListE());
     	controller=new Table<ModelNegozio>().get(negozio, dati.getoListE());
     	mainController.getBorderPane().setCenter(controller);
-    	*/
+    	/*
     	FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/viewNegozi.fxml"));
     	try {
 			TableView<ModelNegozio> table = loader.load();
@@ -109,7 +109,7 @@ public class MenuController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+*/
 	}
 
     @FXML

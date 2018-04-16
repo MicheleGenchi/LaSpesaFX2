@@ -9,8 +9,6 @@ import java.util.List;
 
 import application.model.ListModel;
 import application.model.ModelNegozio;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class DAONegozio extends DAO<ModelNegozio> {
 

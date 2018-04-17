@@ -2,11 +2,17 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<TableView fx:id="tableNegozio" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.TableNegozioController">
-  <columns>
-    <TableColumn fx:id="colidNegozio" prefWidth="75.0" style="-fx-background-color: black;" text="idNegozio" />
-    <TableColumn fx:id="colNome" prefWidth="75.0" style="-fx-background-color: black;" text="Nome" />
-    <TableColumn fx:id="colIdProdotto" prefWidth="88.0" style="-fx-background-color: black;" text="idProdotto" />
-  </columns>
-</TableView>
+
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.TableNegozioController">
+   <children>
+      <TableView fx:id="tableNegozio">
+        <columns>
+          <TableColumn fx:id="colidNegozio" prefWidth="75.0" text="IDNegozio" />
+          <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
+            <TableColumn fx:id="colIdProdotto" prefWidth="75.0" text="IDProdotto" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

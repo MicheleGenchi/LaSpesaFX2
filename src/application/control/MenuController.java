@@ -12,9 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Control;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class MenuController {
 
@@ -89,7 +91,7 @@ public class MenuController {
 
     @FXML
     void doVisuallizzaNegozio(ActionEvent event) {
-    	
+/*  	
     	Class<ModelNegozio> negozio=ModelNegozio.class;
     	DAONegozio dao=new DAONegozio();
     	ModelListNegozio dati = ModelListNegozio.getInstance();
@@ -100,16 +102,17 @@ public class MenuController {
     	//dati.setoListE(dati.getListE());
     	controller=new Table<ModelNegozio>().get(negozio, dati.getoListE());
     	mainController.getBorderPane().setCenter(controller);
-    	/*
+*/	
     	FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/viewNegozi.fxml"));
     	try {
-			TableView<ModelNegozio> table = loader.load();
-			mainController.getBorderPane().setCenter(table);
+			AnchorPane a = (AnchorPane) loader.load();
+			TableNegozioController c=(TableNegozioController) loader.getController();
+			mainController.getBorderPane().setCenter(a);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
+
 	}
 
     @FXML

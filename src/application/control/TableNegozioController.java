@@ -42,17 +42,17 @@ public class TableNegozioController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		colidNegozio.setCellValueFactory(new PropertyValueFactory<>("colidNegozio"));
-		colNome.setCellValueFactory(new PropertyValueFactory<>("colNome"));
-		colIdProdotto.setCellValueFactory(new PropertyValueFactory<>("colIdProdotto"));
+		colidNegozio.setCellValueFactory(new PropertyValueFactory<>("key"));
+		colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colIdProdotto.setCellValueFactory(new PropertyValueFactory<>("listaIdProdotti"));
 		
 		DAONegozio dao=new DAONegozio();
     	ModelListNegozio dati = ModelListNegozio.getInstance();
     	dao.leggi(dati);
     	System.out.println(dati.getoListE());
     	tableNegozio.setItems(dati.getoListE());
-    	if (tableNegozio.getColumns().setAll(colidNegozio,colNome,colIdProdotto)) 
-			System.out.println("getColumns OK");
+//    	if (tableNegozio.getColumns().setAll(colidNegozio,colNome,colIdProdotto)) 
+//			System.out.println("getColumns OK");
 	}
 
 	/**

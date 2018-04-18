@@ -5,79 +5,58 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.UpdateProdottoController">
    <children>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+      <GridPane gridLinesVisible="true" hgap="5.0" styleClass="pane" stylesheets="@application.css" vgap="5.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Aggiungi un prodotto">
+            <Label id="titolo" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Aggiungi un prodotto" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <styleClass>
                   <String fx:value="label" />
                   <String fx:value="hbox" />
                </styleClass>
             </Label>
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="idProdotto" GridPane.rowIndex="1" />
+            <TextField fx:id="idprodotto" maxWidth="1.7976931348623157E308" styleClass="text" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="nome" GridPane.rowIndex="2" />
+            <TextField fx:id="nome" maxWidth="1.7976931348623157E308" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Descrizione" GridPane.rowIndex="3" />
+            <TextField fx:id="descrizione" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="marca" GridPane.rowIndex="4" />
+            <TextField fx:id="marca" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Contenitore" GridPane.rowIndex="5" />
+            <ComboBox fx:id="contenitore" maxWidth="1.7976931348623157E308" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Peso" GridPane.rowIndex="6" />
+            <TextField fx:id="peso" styleClass="text" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="quantita" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="prezzo" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ComboBox fx:id="negozio_idNegozio" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Quantità" GridPane.rowIndex="7" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Prezzo" GridPane.rowIndex="8" />
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="idNegozio" GridPane.rowIndex="9" />
+            <Button fx:id="btnAggiungi" mnemonicParsing="false" stylesheets="@application.css" text="AGGIUNGI" GridPane.columnSpan="2" GridPane.rowIndex="10" />
          </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="idProdotto" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="idprodotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="text" stylesheets="@application.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="nome" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="nome" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Descrizione" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="descrizione" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="marca" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="marca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Contenitore" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <ComboBox fx:id="contenitore" layoutX="86.0" layoutY="3.0" prefWidth="150.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Peso" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="peso" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Quantità" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="quantita" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Prezzo" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <TextField fx:id="prezzo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="idNegozio" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <ComboBox fx:id="negozio_idNegozio" layoutX="82.0" layoutY="3.0" prefWidth="150.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane>
-         <children>
-            <Button fx:id="btnAggiungi" mnemonicParsing="false" text="AGGIUNGI" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0" />
-         </children>
-      </AnchorPane>
+      </GridPane>
    </children>
 </VBox>

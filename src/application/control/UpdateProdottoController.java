@@ -2,8 +2,12 @@ package application.control;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import Utils.TIPOCONTENITORE;
+import application.db.DAONegozio;
 import application.db.DAOProdotto;
+import application.model.ModelListNegozio;
+import application.model.ModelNegozio;
 import application.model.ModelProdotto;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -31,7 +35,7 @@ public class UpdateProdottoController implements Initializable {
 	@FXML
 	private TextField prezzo;
 	@FXML
-	private ComboBox<Integer> negozio_idNegozio;
+	private ComboBox<ModelNegozio> negozio_idNegozio;
 
 	@FXML
 	private Button btnAggiungi;
@@ -44,6 +48,13 @@ public class UpdateProdottoController implements Initializable {
 		nome.textProperty().bindBidirectional(model.descrizioneProperty());
 		marca.textProperty().bindBidirectional(model.marcaProperty());
 		contenitore.setItems(FXCollections.observableArrayList(TIPOCONTENITORE.values()));
+		populateNegozio_idNegozio(negozio_idNegozio);
 	}
-
+	
+	public void populateNegozio_idNegozio(ComboBox<ModelNegozio> combo) {
+		DAONegozio dao=new DAONegozio();
+		ModelListNegozio model=ModelListNegozio.getInstance();
+		dao.leggi(model);
+		combo.setItems(model.getoListE());
+	}
 }

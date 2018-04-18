@@ -49,10 +49,7 @@ public class TableNegozioController implements Initializable {
 		DAONegozio dao=new DAONegozio();
     	ModelListNegozio dati = ModelListNegozio.getInstance();
     	dao.leggi(dati);
-    	System.out.println(dati.getoListE());
     	tableNegozio.setItems(dati.getoListE());
-//    	if (tableNegozio.getColumns().setAll(colidNegozio,colNome,colIdProdotto)) 
-//			System.out.println("getColumns OK");
 	}
 
 	/**

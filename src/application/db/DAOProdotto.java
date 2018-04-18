@@ -38,7 +38,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 						rs.getString("descrizione"),
 						rs.getString("marca"),
 						rs.getString("contenitore"),
-						rs.getInt("peso"),
+						rs.getString("peso"),
 						rs.getInt("quantità"),
 						rs.getFloat("prezzo"),
 						rs.getInt("negozio_idNegozio"));
@@ -63,7 +63,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 				st.setString(2, record.getDescrizione());
 				st.setString(3, record.getMarca());
 				st.setString(4, record.getContenitore());
-				st.setInt(5, record.getPeso());
+				st.setString(5, record.getPeso());
 				st.setInt(6, record.getQuantità());
 				st.setFloat(7, record.getPrezzo());
 				st.setInt(8, record.getNegozio_idNegozio());
@@ -82,7 +82,8 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 		try {
 			Statement st=conn.createStatement();
 			ResultSet rs=st.executeQuery(SQL);
-			conta=rs.getInt(1);
+			if (rs.first())
+				conta=rs.getInt(1);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

@@ -14,13 +14,13 @@ public class ModelProdotto {
 	private StringProperty descrizione=new SimpleStringProperty();
 	private StringProperty marca=new SimpleStringProperty();
 	private StringProperty contenitore=new SimpleStringProperty();
-	private IntegerProperty peso=new SimpleIntegerProperty();
+	private StringProperty peso=new SimpleStringProperty();
 	private IntegerProperty quantità=new SimpleIntegerProperty();
 	private FloatProperty prezzo=new SimpleFloatProperty();
 	private IntegerProperty negozio_idNegozio=new SimpleIntegerProperty();
 	
 	public ModelProdotto(int idprodotto, String nome, String descrizione, String marca,
-			String contenitore, int peso, int quantità, float prezzo,
+			String contenitore, String peso, int quantità, float prezzo,
 			int negozio_idNegozio) {
 		setIdprodotto(idprodotto);
 		setNome(nome);
@@ -46,7 +46,7 @@ public class ModelProdotto {
 	}
 	
 	public ModelProdotto() {
-		this(0, "", "", "", "", 0, 0, 0.0f,0);
+		this(0, "", "", "", "", "", 0, 0.0f,0);
 	}
 
 	public final IntegerProperty idprodottoProperty() {
@@ -121,19 +121,19 @@ public class ModelProdotto {
 	
 
 
-	public final IntegerProperty pesoProperty() {
+	public final StringProperty pesoProperty() {
 		return this.peso;
 	}
 	
 
 
-	public final int getPeso() {
+	public final String getPeso() {
 		return this.pesoProperty().get();
 	}
 	
 
 
-	public final void setPeso(final int peso) {
+	public final void setPeso(final String peso) {
 		this.pesoProperty().set(peso);
 	}
 	

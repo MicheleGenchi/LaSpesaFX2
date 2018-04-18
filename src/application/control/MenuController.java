@@ -2,20 +2,12 @@ package application.control;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import application.db.DAONegozio;
-import application.model.ModelListNegozio;
-import application.model.ModelNegozio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Control;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class MenuController {
@@ -66,7 +58,17 @@ public class MenuController {
 
     @FXML
     void doAggiungiProdotto(ActionEvent event) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UpdateProdotto.fxml"));
 
+		Node viewAggiungiProdotto = null;
+		try {
+			viewAggiungiProdotto = loader.load();
+			viewAggiungiProdotto.getStyleClass().add(getClass().getResource("../view/application.css").toExternalForm());
+			mainController.getBorderPane().setCenter(viewAggiungiProdotto);
+		} catch (IOException e) {
+			System.err.println("viewAggiungiProdotto = (VBox) loader.load();");
+			e.printStackTrace();
+		}
     }
 
     @FXML
@@ -106,7 +108,6 @@ public class MenuController {
     	FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/viewNegozi.fxml"));
     	try {
 			AnchorPane a = (AnchorPane) loader.load();
-			TableNegozioController c=(TableNegozioController) loader.getController();
 			mainController.getBorderPane().setCenter(a);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

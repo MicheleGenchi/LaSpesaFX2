@@ -6,17 +6,17 @@ public class Prodotto {
 	private String descrizione;
 	private String marca;
 	private String contenitore;
-	private int peso;
+	private String peso;
 	private int quantità;
 	private float prezzo;
 	private int negozio_idNegozio; 
 
 	public Prodotto() {
-		this(0, "", "", "", "", 0, 0, 0.0f,0);
+		this(0, "", "", "", "", "", 0, 0.0f,0);
 	}
 
 	public Prodotto(int idprodotto, String nome, String descrizione, String marca, String contenitore, 
-			int peso, int quantità, float prezzo, int negozio_idNegozio) {
+			String peso, int quantità, float prezzo, int negozio_idNegozio) {
 		this.idprodotto = idprodotto;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -132,7 +132,7 @@ public class Prodotto {
 	/**
 	 * @return the peso
 	 */
-	public int getPeso() {
+	public String getPeso() {
 		return peso;
 	}
 
@@ -140,7 +140,7 @@ public class Prodotto {
 	 * @param peso
 	 *            the peso to set
 	 */
-	public void setPeso(int peso) {
+	public void setPeso(String peso) {
 		this.peso = peso;
 	}
 

@@ -101,8 +101,8 @@ public class DAONegozio extends DAO<ModelNegozio> {
 		try {
 			Statement st=conn.createStatement();
 			ResultSet rs=st.executeQuery(SQL);
-			rs.next();
-			conta=rs.getInt(1);
+			if (rs.first())
+				conta=rs.getInt(1);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

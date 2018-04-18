@@ -5,7 +5,8 @@
 }
 
 #tableCol {
-		-fx-background-color: black;
+		-fx-tick-label-fill: black; 
+		-fx-text-fill: black;
 		-fx-font-weight: bold;
 }
 

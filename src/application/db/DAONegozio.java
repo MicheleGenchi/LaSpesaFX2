@@ -38,7 +38,7 @@ public class DAONegozio extends DAO<ModelNegozio> {
 		}
 		return conta;
 	}
-
+	
 	public boolean cercaNegozio(int idNegozio, ModelNegozio record) {
 		boolean trovato=false;
 		String SQL = "select Negozio.idNegozio, Negozio.nome from spesa2.Negozio"

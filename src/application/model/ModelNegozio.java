@@ -72,7 +72,6 @@ public class ModelNegozio  {
 	 */
 	@Override
 	public String toString() {
-		return "SuperMercato [key=" + getKey() + ", nome=" + getNome() + "]"+"\n"+
-				(getListaIdProdotti().size()==0?"Non ci sono prodotti in questo negozio":"I prodotti in questo negozio sono:\n"+ getListaIdProdotti())+"\n\n";
+		return  String.valueOf(key.get());
 	}
 }

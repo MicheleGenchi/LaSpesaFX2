@@ -1,10 +1,13 @@
 package application.model;
 
 
+import Utils.TIPOCONTENITORE;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -46,7 +49,7 @@ public class ModelProdotto {
 	}
 	
 	public ModelProdotto() {
-		this(0, "", "", "", "", "", 0, 0.0f,0);
+		this(0, "", "", "", null, "", 0, 0.0f,0);
 	}
 
 	public final IntegerProperty idprodottoProperty() {
@@ -101,25 +104,6 @@ public class ModelProdotto {
 		this.descrizioneProperty().set(descrizione);
 	}
 	
-
-
-	public final StringProperty contenitoreProperty() {
-		return this.contenitore;
-	}
-	
-
-
-	public final String getContenitore() {
-		return this.contenitoreProperty().get();
-	}
-	
-
-
-	public final void setContenitore(final String contenitore) {
-		this.contenitoreProperty().set(contenitore);
-	}
-	
-
 
 	public final StringProperty pesoProperty() {
 		return this.peso;
@@ -216,6 +200,21 @@ public class ModelProdotto {
 				+ marca + ", contenitore=" + contenitore + ", peso=" + peso + ", quantità=" + quantità + ", prezzo="
 				+ prezzo + ",\n negozio_idNegozio=" + negozio_idNegozio + "]\n";
 	}
+
+	public final StringProperty contenitoreProperty() {
+		return this.contenitore;
+	}
+	
+
+	public final  String getContenitore() {
+		return this.contenitoreProperty().get();
+	}
+	
+
+	public final void setContenitore(final String contenitore) {
+		this.contenitoreProperty().set(contenitore);
+	}
+	
 }
 
 

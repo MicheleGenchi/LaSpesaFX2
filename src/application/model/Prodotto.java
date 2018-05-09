@@ -7,25 +7,25 @@ public class Prodotto {
 	private String marca;
 	private String contenitore;
 	private String peso;
-	private int quantità;
+	private int quantita;
 	private float prezzo;
 	private int negozio_idNegozio; 
+	private String nomeNegozio;
 
 	public Prodotto() {
-		this(0, "", "", "", "", "", 0, 0.0f,0);
+		this(0, "", "", "", "", "", 0, 0.0f);
 	}
 
 	public Prodotto(int idprodotto, String nome, String descrizione, String marca, String contenitore, 
-			String peso, int quantità, float prezzo, int negozio_idNegozio) {
+			String peso, int quantita, float prezzo) {
 		this.idprodotto = idprodotto;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.marca = marca;
 		this.contenitore = contenitore;
 		this.peso = peso;
-		this.quantità = quantità;
+		this.quantita = quantita;
 		this.prezzo = prezzo;
-	    this.negozio_idNegozio = negozio_idNegozio; 
 	}
 
 	public Prodotto(ModelProdotto modelProdotto) {
@@ -36,9 +36,8 @@ public class Prodotto {
 		modelProdotto.getMarca(),
 		modelProdotto.getContenitore(),
 		modelProdotto.getPeso(),
-		modelProdotto.getQuantità(),
-		modelProdotto.getPrezzo(),
-		modelProdotto.getNegozio_idNegozio()); 
+		modelProdotto.getQuantita(),
+		modelProdotto.getPrezzo()); 
 	}
 
 	
@@ -49,9 +48,8 @@ public class Prodotto {
 		setMarca(prodotto.getMarca());
 		setContenitore(prodotto.getContenitore());
 		setPeso(prodotto.getPeso());
-		setQuantità(prodotto.getQuantità());
+		setQuantita(prodotto.getQuantita());
 		setPrezzo(prodotto.getPrezzo());
-	    setNegozio_idNegozio(prodotto.getNegozio_idNegozio());
 	}
 	
 	/**
@@ -147,16 +145,16 @@ public class Prodotto {
 	/**
 	 * @return the quantità
 	 */
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
 
 	/**
 	 * @param quantità
 	 *            the quantità to set
 	 */
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;
 	}
 
 	/**
@@ -187,6 +185,20 @@ public class Prodotto {
 	 */
 	public void setNegozio_idNegozio(int negozio_idNegozio) {
 		this.negozio_idNegozio = negozio_idNegozio;
+	}
+
+	/**
+	 * @return the nomeNegozio
+	 */
+	public String getNomeNegozio() {
+		return nomeNegozio;
+	}
+
+	/**
+	 * @param nomeNegozio the nomeNegozio to set
+	 */
+	public void setNomeNegozio(String nomeNegozio) {
+		this.nomeNegozio = nomeNegozio;
 	}
 
 }

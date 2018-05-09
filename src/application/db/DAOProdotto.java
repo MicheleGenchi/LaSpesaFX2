@@ -12,20 +12,33 @@ import application.model.ModelProdotto;
 import application.model.Prodotto;
 
 public class DAOProdotto extends DAO<ModelProdotto> {
+	private static DAOProdotto instance;
 	
-	public DAOProdotto() {
+	private DAOProdotto() {
 
+	}
+	
+	public static DAOProdotto getInstance() {
+		if (instance == null) {
+			// Thread Safe. Might be costly operation in some case
+			synchronized (DAOProdotto.class) {
+				if (instance == null) {
+					instance = new DAOProdotto();
+				}
+			}
+		}
+		return instance;
 	}
 	
 	@Override
 	public String toString() {
-		return  "Tabella Prodotto";
+		return  "\nTabella Prodotto";
 	}
 
 	@Override
 	public int leggi(ListModel<ModelProdotto> dati) {
 		int conta=0;
-		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio,negozio.nome" + 
+		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantita,prezzo,negozio_idNegozio" + 
 				"	from spesa2.prodotto, spesa2.negozio" + 
 				"	where prodotto.negozio_idNegozio=negozio.idNegozio order by prodotto.nome";
 
@@ -34,12 +47,12 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 			while (rs.next()) {
 				ModelProdotto record = new ModelProdotto(
 						rs.getInt("idProdotto"),
-						rs.getString("nome"),
+						rs.getString("prodotto.nome"),
 						rs.getString("descrizione"),
 						rs.getString("marca"),
 						rs.getString("contenitore"),
 						rs.getString("peso"),
-						rs.getInt("quantità"),
+						rs.getInt("quantita"),
 						rs.getFloat("prezzo"),
 						rs.getInt("negozio_idNegozio"));
 				conta++;
@@ -53,7 +66,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 
 	@Override
 	public int scrivi(ListModel<ModelProdotto> dati) {
-		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio.idNegozio) "
+		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantita,prezzo,negozio.idNegozio) "
 				+ "value (?,?,?,?,?,?,?,?);";
 		int conta = 0;
 		try {
@@ -64,7 +77,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 				st.setString(3, record.getMarca());
 				st.setString(4, record.getContenitore());
 				st.setString(5, record.getPeso());
-				st.setInt(6, record.getQuantità());
+				st.setInt(6, record.getQuantita());
 				st.setFloat(7, record.getPrezzo());
 				st.setInt(8, record.getNegozio_idNegozio());
 				conta = st.executeUpdate();
@@ -92,7 +105,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 	
 	public boolean cerca(int idProdotto, Prodotto record) {
 		boolean trovato=false;
-		String SQL = "select  idprodotto,prodotto.nome,descrizione,marca, contenitore,peso,quantità,prezzo,negozio_idNegozio" + 
+		String SQL = "select  idprodotto, nome,descrizione,marca, contenitore,peso,quantita,prezzo,negozio_idNegozio" + 
 				"	from spesa2.prodotto" + 
 				"	where prodotto.idprodotto=? order by prodotto.nome";
 
@@ -102,7 +115,8 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 			if (rs.first()) {
 				trovato=true;
 				for (Field field:record.getClass().getDeclaredFields()) {
-					Utils.callSetter(record,field.getName(),rs.getObject(field.getName()));
+					if (field.getName()!="nomeNegozio")
+						Utils.callSetter(record,field.getName(),rs.getObject(field.getName()));
 				}
 			}
 		} catch (SQLException | IllegalArgumentException e) {

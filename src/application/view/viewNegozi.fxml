@@ -6,7 +6,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.TableNegozioController">
    <children>
-      <TableView fx:id="tableNegozio" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="tableNegozio" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
         <columns>
           <TableColumn fx:id="colidNegozio" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="50.0" text="key" />
           <TableColumn fx:id="colNome" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="Nome" />

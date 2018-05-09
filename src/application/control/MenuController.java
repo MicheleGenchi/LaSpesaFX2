@@ -51,7 +51,7 @@ public class MenuController {
 			viewAggiungiNegozio.getStyleClass().add(getClass().getResource("../view/application.css").toExternalForm());
 			mainController.getBorderPane().setCenter(viewAggiungiNegozio);
 		} catch (IOException e) {
-			System.err.println("viewAggiungiNegozio = (VBox) loader.load();");
+			System.err.println("viewAggiungiNegozio = loader.load();");
 			e.printStackTrace();
 		}
     }
@@ -66,7 +66,7 @@ public class MenuController {
 			viewAggiungiProdotto.getStyleClass().add(getClass().getResource("../view/application.css").toExternalForm());
 			mainController.getBorderPane().setCenter(viewAggiungiProdotto);
 		} catch (IOException e) {
-			System.err.println("viewAggiungiProdotto = (VBox) loader.load();");
+			System.err.println("viewAggiungiProdotto = loader.load();");
 			e.printStackTrace();
 		}
     }
@@ -88,6 +88,14 @@ public class MenuController {
 
     @FXML
     void doVisualizzaProdotto(ActionEvent event) {
+       	FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/viewProdotti.fxml"));
+    	try {
+			AnchorPane a = (AnchorPane) loader.load();
+			mainController.getBorderPane().setCenter(a);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
 
@@ -105,7 +113,7 @@ public class MenuController {
     	controller=new Table<ModelNegozio>().get(negozio, dati.getoListE());
     	mainController.getBorderPane().setCenter(controller);
 */	
-    	FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/viewNegozi.fxml"));
+       	FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/viewNegozi.fxml"));
     	try {
 			AnchorPane a = (AnchorPane) loader.load();
 			mainController.getBorderPane().setCenter(a);

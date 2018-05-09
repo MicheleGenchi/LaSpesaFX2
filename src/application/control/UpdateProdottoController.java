@@ -1,26 +1,18 @@
 package application.control;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
-
 import Utils.TIPOCONTENITORE;
 import application.db.DAONegozio;
 import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
 import application.model.ModelNegozio;
 import application.model.ModelProdotto;
-import application.model.Negozio;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -60,9 +52,8 @@ public class UpdateProdottoController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ModelProdotto model = new ModelProdotto();
-		model.setIdprodotto(new DAOProdotto().lastRecord() + 1);
-		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), 
-				new NumberStringConverter());
+		model.setIdprodotto(DAOProdotto.getInstance().lastRecord() + 1);
+		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
 		nome.textProperty().bindBidirectional(model.descrizioneProperty());
 		marca.textProperty().bindBidirectional(model.marcaProperty());
 		contenitore.getItems().addAll(TIPOCONTENITORE.values());
@@ -72,17 +63,9 @@ public class UpdateProdottoController implements Initializable {
 
 		populateNegozio_idNegozio(negozio_idNegozio);
 		testValueidNegozio.textProperty().bind(Bindings.convert(negozio_idNegozio.valueProperty()));
-		
-		// How to do it -> create a bind between
-		// model.negozio_idNegozio this is a IntegerProperty;
-		// and combobox<ModelNegozio> return value key(IntegerProperty)  
-		// ModelNegozio have this Attributes
-		// private IntegerProperty key=new SimpleIntegerProperty();
-		// private StringProperty nome=new SimpleStringProperty();
-		// private ObservableList<Integer> listaIdProdotti=FXCollections.observableArrayList();
+		bindStringNumber(testValueidNegozio.textProperty(),model.negozio_idNegozioProperty());
 		
 		nome.textProperty().addListener(new ChangeListener<String>() {
-
 			@Override
 			public void changed(ObservableValue<? extends String> ov, String t, String t1) {
 				// System.out.println(t+"====="+t1);
@@ -95,16 +78,17 @@ public class UpdateProdottoController implements Initializable {
 	}
 
 	public void populateNegozio_idNegozio(ComboBox<ModelNegozio> combo) {
-		DAONegozio dao = new DAONegozio();
+		DAONegozio dao = DAONegozio.getInstance();
 		ModelListNegozio model = ModelListNegozio.getInstance();
 		dao.leggi(model);
 		combo.setItems(model.getoListE());
-	
+
 		combo.setConverter(new StringConverter<ModelNegozio>() {
 			@Override
 			public String toString(ModelNegozio object) {
 				return object == null ? null : object.getNome();
 			}
+
 			@Override
 			public ModelNegozio fromString(String string) {
 				return combo.getItems().stream().filter(i -> i.getNome().equals(string)).findAny().orElse(null);
@@ -121,12 +105,30 @@ public class UpdateProdottoController implements Initializable {
 			}
 		});
 	}
-	
-    @FXML
-    void Aggiungi(ActionEvent event) {
-    	ModelProdotto prodotto=new ModelProdotto();
-    	MenuController.mainController.getListaProdotti().clean();
-    	MenuController.mainController.getListaProdotti().aggiungi(prodotto);
-    	MenuController.mainController.getListaProdotti().setChange(true);
-    }
+
+	@FXML
+	void Aggiungi(ActionEvent event) {
+		ModelProdotto prodotto = new ModelProdotto();
+		MenuController.mainController.getListaProdotti().clean();
+		MenuController.mainController.getListaProdotti().aggiungi(prodotto);
+		MenuController.mainController.getListaProdotti().setChange(true);
+	}
+
+	private void bindStringNumber(StringProperty textProp, IntegerProperty intProp) {
+
+		
+		textProp.bindBidirectional(intProp, new StringConverter<Number>() {
+			@Override
+			public String toString(Number object) {
+				return object.toString();
+			}
+			@Override
+			public Number fromString(String string) {
+				return Integer.parseInt(string);
+			}
+
+		});
+		System.out.println(textProp);
+		System.out.println(intProp);
+	}
 }

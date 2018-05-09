@@ -46,7 +46,7 @@ public class TableNegozioController implements Initializable {
 		colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colIdProdotto.setCellValueFactory(new PropertyValueFactory<>("listaIdProdotti"));
 		
-		DAONegozio dao=new DAONegozio();
+		DAONegozio dao=DAONegozio.getInstance();
     	ModelListNegozio dati = ModelListNegozio.getInstance();
     	dao.leggi(dati);
     	tableNegozio.setItems(dati.getoListE());

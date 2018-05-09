@@ -49,7 +49,7 @@ public class UpdateNegozioController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
         model=new ModelNegozio();
-        model.setKey(new DAONegozio().lastRecord()+1);
+        model.setKey(DAONegozio.getInstance().lastRecord()+1);
         textidNegozio.textProperty().bindBidirectional(model.keyProperty(),new NumberStringConverter());
         textNomeNegozio.textProperty().bindBidirectional(model.nomeProperty());
         btnAggiungiNegozio.setDisable(true);

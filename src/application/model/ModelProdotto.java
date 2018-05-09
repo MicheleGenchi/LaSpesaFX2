@@ -1,13 +1,10 @@
 package application.model;
 
 
-import Utils.TIPOCONTENITORE;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -18,12 +15,13 @@ public class ModelProdotto {
 	private StringProperty marca=new SimpleStringProperty();
 	private StringProperty contenitore=new SimpleStringProperty();
 	private StringProperty peso=new SimpleStringProperty();
-	private IntegerProperty quantit‡=new SimpleIntegerProperty();
+	private IntegerProperty quantita=new SimpleIntegerProperty();
 	private FloatProperty prezzo=new SimpleFloatProperty();
 	private IntegerProperty negozio_idNegozio=new SimpleIntegerProperty();
+	private StringProperty nomeNegozio=new SimpleStringProperty();
 	
 	public ModelProdotto(int idprodotto, String nome, String descrizione, String marca,
-			String contenitore, String peso, int quantit‡, float prezzo,
+			String contenitore, String peso, int quantita, float prezzo,
 			int negozio_idNegozio) {
 		setIdprodotto(idprodotto);
 		setNome(nome);
@@ -31,9 +29,10 @@ public class ModelProdotto {
 		setMarca(marca);
 		setContenitore(contenitore);
 		setPeso(peso);
-		setQuantit‡(quantit‡);
+		setQuantita(quantita);
 		setPrezzo(prezzo);
 		setNegozio_idNegozio(negozio_idNegozio);
+		setNomeNegozio(getNomeNegozio());
 	}
 	
 	public ModelProdotto(Prodotto prodotto) {
@@ -43,7 +42,7 @@ public class ModelProdotto {
 				prodotto.getMarca(),
 				prodotto.getContenitore(),
 				prodotto.getPeso(),
-				prodotto.getQuantit‡(),
+				prodotto.getQuantita(),
 				prodotto.getPrezzo(),
 				prodotto.getNegozio_idNegozio());
 	}
@@ -123,20 +122,19 @@ public class ModelProdotto {
 	
 
 
-	public final IntegerProperty quantit‡Property() {
-		return this.quantit‡;
+	public final IntegerProperty quantitaProperty() {
+		return this.quantita;
 	}
 	
 
 
-	public final int getQuantit‡() {
-		return this.quantit‡Property().get();
-	}
-	
+	public final int getQuantita() {
+		return this.quantitaProperty().get();
+	}	
 
 
-	public final void setQuantit‡(final int quantit‡) {
-		this.quantit‡Property().set(quantit‡);
+	public final void setQuantita(final int quantita) {
+		this.quantitaProperty().set(quantita);
 	}
 	
 
@@ -179,28 +177,15 @@ public class ModelProdotto {
 		return this.marca;
 	}
 	
-
-
+	
 	public final String getMarca() {
 		return this.marcaProperty().get();
 	}
 	
-
-
 	public final void setMarca(final String marca) {
 		this.marcaProperty().set(marca);
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Prodotto [idprodotto=" + idprodotto + ", nome=" + nome + ", descrizione=" + descrizione + ", marca="
-				+ marca + ", contenitore=" + contenitore + ", peso=" + peso + ", quantit‡=" + quantit‡ + ", prezzo="
-				+ prezzo + ",\n negozio_idNegozio=" + negozio_idNegozio + "]\n";
-	}
-
 	public final StringProperty contenitoreProperty() {
 		return this.contenitore;
 	}
@@ -215,6 +200,36 @@ public class ModelProdotto {
 		this.contenitoreProperty().set(contenitore);
 	}
 	
+	
+	public final StringProperty nomeNegozioProperty() {
+		return this.nomeNegozio;
+	}
+	
+
+	public final String getNomeNegozio() {
+		ModelListNegozio mn=ModelListNegozio.getInstance();
+		String appoggio=mn.cerca(negozio_idNegozioProperty().get());
+		this.nomeNegozioProperty().set(appoggio);
+		return this.nomeNegozioProperty().get();
+	}
+	
+
+	public final void setNomeNegozio(final String nomeNegozio) {
+		this.nomeNegozioProperty().set(nomeNegozio);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Prodotto [idprodotto=" + idprodotto.get() + 
+			   ", nome=" + nome.get() + ", descrizione=" + descrizione.get() + 
+			   ", marca="+ marca.get() + ", contenitore=" + contenitore.get() + 
+			   ", peso=" + peso.get() + ", quantit‡=" + quantita.get() + 
+			   ", prezzo="+ prezzo.get() + ", nome Negozio=" + nomeNegozio.get() + "]\n";
+	}
+
 }
 
 

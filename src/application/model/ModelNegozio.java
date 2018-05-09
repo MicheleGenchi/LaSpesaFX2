@@ -3,6 +3,7 @@ package application.model;
 import java.util.List;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -51,6 +52,7 @@ public class ModelNegozio  {
 		this.nomeProperty().set(nome);
 	}
 
+
 	/**
 	 * @return the listaIdProdotti
 	 */
@@ -72,6 +74,6 @@ public class ModelNegozio  {
 	 */
 	@Override
 	public String toString() {
-		return  String.valueOf(key.get());
+		return String.valueOf(key.get());
 	}
 }

@@ -11,14 +11,28 @@ import application.model.ListModel;
 import application.model.ModelNegozio;
 
 public class DAONegozio extends DAO<ModelNegozio> {
+private static DAONegozio instance;
 
-	public DAONegozio() {
+	private DAONegozio() {
 
 	}
+	
+	public static DAONegozio getInstance() {
+		if (instance == null) {
+			// Thread Safe. Might be costly operation in some case
+			synchronized (DAONegozio.class) {
+				if (instance == null) {
+					instance = new DAONegozio();
+				}
+			}
+		}
+		return instance;
+	}
+	
 
 	@Override
 	public String toString() {
-		return "Tabella Supermercato";
+		return "\nTabella Supermercato";
 	}
 
 	@Override

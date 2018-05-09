@@ -25,7 +25,7 @@ public class ModelListProdotto extends ListModel<ModelProdotto> {
 
 	@Override
 	public void save() {
-		DAOProdotto dao=new DAOProdotto();
+		DAOProdotto dao=DAOProdotto.getInstance();
 		dao.scrivi(this);
 		setChange(false);
 	}

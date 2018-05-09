@@ -3,7 +3,6 @@ package application.control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.db.DAONegozio;
 import application.db.DAOProdotto;
 import application.model.ModelListProdotto;
 import application.model.ModelNegozio;

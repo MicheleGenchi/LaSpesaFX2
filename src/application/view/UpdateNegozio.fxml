@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.UpdateNegozioController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.UpdateNegozioController">
    <children>
-      <GridPane gridLinesVisible="true" hgap="5.0" styleClass="pane" stylesheets="@application.css" vgap="5.0" VBox.vgrow="ALWAYS">
+      <GridPane hgap="5.0" style="-fx-background-color: gray;" styleClass="vbox" stylesheets="@application.css" vgap="5.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
           <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

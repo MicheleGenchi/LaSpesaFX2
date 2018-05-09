@@ -3,7 +3,9 @@ package application.control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.db.DAONegozio;
 import application.db.DAOProdotto;
+import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
 import application.model.ModelNegozio;
 import application.model.ModelProdotto;
@@ -66,6 +68,13 @@ public class TableProdottoController implements Initializable {
 			quantita.setCellValueFactory(new PropertyValueFactory<>("quantita"));
 			prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
 			idNegozio.setCellValueFactory(new PropertyValueFactory<>("negozio_idNegozio"));
+			// prima di caricare il nome del negozio bisogna accertarsi 
+			// che la lista dei negozi sia carica 
+			ModelListNegozio mn=ModelListNegozio.getInstance();
+			if (mn.getoListE().isEmpty()) {
+				DAONegozio dao=DAONegozio.getInstance();
+				dao.leggi(mn);
+			}
 			nomeNegozio.setCellValueFactory(new PropertyValueFactory<>("nomeNegozio"));
 			
 			DAOProdotto dao=DAOProdotto.getInstance();

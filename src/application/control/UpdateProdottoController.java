@@ -41,7 +41,7 @@ public class UpdateProdottoController implements Initializable {
 	@FXML
 	private TextField prezzo;
 	@FXML
-	private ComboBox<ModelNegozio> negozio_idNegozio;
+	private ComboBox<ModelNegozio> negozio;
 	@FXML
 	private TextField testValueContenitore;
 	@FXML
@@ -60,10 +60,17 @@ public class UpdateProdottoController implements Initializable {
 		contenitore.getSelectionModel().selectFirst();
 		testValueContenitore.textProperty().bind(Bindings.convert(contenitore.valueProperty()));
 		model.contenitoreProperty().bind(Bindings.convert(contenitore.valueProperty()));
-
-		populateNegozio_idNegozio(negozio_idNegozio);
-		testValueidNegozio.textProperty().bind(Bindings.convert(negozio_idNegozio.valueProperty()));
-		bindStringNumber(testValueidNegozio.textProperty(),model.negozio_idNegozioProperty());
+		negozio.setItems(ModelListNegozio.getInstance().getoListE());
+		populateNomeNegozi(negozio);
+//		nomeNegozio.valueProperty().addListener(new ChangeListener<ModelNegozio>() {
+//				@Override
+//				public void changed(ObservableValue<? extends ModelNegozio> observable, ModelNegozio oldValue,
+//						ModelNegozio newValue) {
+//					// TODO Auto-generated method stub
+//					ModelListNegozio list=ModelListNegozio.getInstance();
+//					testValueidNegozio.setText(String.valueOf(list.cerca(observable.getValue().getNome())));
+//				}
+//		});
 		
 		nome.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -77,7 +84,7 @@ public class UpdateProdottoController implements Initializable {
 		});
 	}
 
-	public void populateNegozio_idNegozio(ComboBox<ModelNegozio> combo) {
+	public void populateNomeNegozi(ComboBox<ModelNegozio> combo) {
 		DAONegozio dao = DAONegozio.getInstance();
 		ModelListNegozio model = ModelListNegozio.getInstance();
 		dao.leggi(model);

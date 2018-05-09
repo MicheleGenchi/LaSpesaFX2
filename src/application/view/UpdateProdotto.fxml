@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="pane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.UpdateProdottoController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.UpdateProdottoController">
    <children>
-      <GridPane gridLinesVisible="true" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="pane" stylesheets="@application.css" vgap="5.0">
+      <GridPane hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: gray;" styleClass="pane" stylesheets="@application.css" vgap="5.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
@@ -53,7 +53,7 @@
             <TextField fx:id="peso" styleClass="text" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="quantita" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField fx:id="prezzo" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <ComboBox fx:id="negozio_idNegozio" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <ComboBox fx:id="negozio" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Quantità" GridPane.rowIndex="8" />
             <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="Prezzo" GridPane.rowIndex="9" />
             <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" text="idNegozio" GridPane.rowIndex="10" />

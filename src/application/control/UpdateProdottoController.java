@@ -62,15 +62,15 @@ public class UpdateProdottoController implements Initializable {
 		model.contenitoreProperty().bind(Bindings.convert(contenitore.valueProperty()));
 		negozio.setItems(ModelListNegozio.getInstance().getoListE());
 		populateNomeNegozi(negozio);
-//		nomeNegozio.valueProperty().addListener(new ChangeListener<ModelNegozio>() {
-//				@Override
-//				public void changed(ObservableValue<? extends ModelNegozio> observable, ModelNegozio oldValue,
-//						ModelNegozio newValue) {
-//					// TODO Auto-generated method stub
-//					ModelListNegozio list=ModelListNegozio.getInstance();
-//					testValueidNegozio.setText(String.valueOf(list.cerca(observable.getValue().getNome())));
-//				}
-//		});
+		negozio.valueProperty().addListener(new ChangeListener<ModelNegozio>() {
+				@Override
+				public void changed(ObservableValue<? extends ModelNegozio> observable, ModelNegozio oldValue,
+						ModelNegozio newValue) {
+					// TODO Auto-generated method stub
+					ModelListNegozio list=ModelListNegozio.getInstance();
+					testValueidNegozio.setText(String.valueOf(list.cerca(observable.getValue().getNome())));
+				}
+		});
 		
 		nome.textProperty().addListener(new ChangeListener<String>() {
 			@Override

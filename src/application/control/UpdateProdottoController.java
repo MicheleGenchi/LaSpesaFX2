@@ -2,6 +2,7 @@ package application.control;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import Utils.TIPOCONTENITORE;
 import application.db.DAONegozio;
 import application.db.DAOProdotto;
@@ -9,8 +10,6 @@ import application.model.ModelListNegozio;
 import application.model.ModelNegozio;
 import application.model.ModelProdotto;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -56,7 +55,8 @@ public class UpdateProdottoController implements Initializable {
 		model = new ModelProdotto();
 		model.setIdprodotto(DAOProdotto.getInstance().lastRecord() + 1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
-		nome.textProperty().bindBidirectional(model.descrizioneProperty());
+		nome.textProperty().bindBidirectional(model.nomeProperty());
+		descrizione.textProperty().bindBidirectional(model.descrizioneProperty());
 		marca.textProperty().bindBidirectional(model.marcaProperty());
 		contenitore.getItems().addAll(TIPOCONTENITORE.values());
 		contenitore.getSelectionModel().selectFirst();

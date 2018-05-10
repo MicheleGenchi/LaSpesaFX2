@@ -66,7 +66,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 
 	@Override
 	public int scrivi(ListModel<ModelProdotto> dati) {
-		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantita,prezzo,negozio.idNegozio) "
+		String SQL = "Insert Into spesa2.Prodotto (nome,descrizione,marca, contenitore,peso,quantita,prezzo,negozio_idNegozio) "
 				+ "value (?,?,?,?,?,?,?,?);";
 		int conta = 0;
 		try {

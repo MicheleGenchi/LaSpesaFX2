@@ -49,9 +49,11 @@ public class UpdateProdottoController implements Initializable {
 	@FXML
 	private Button btnAggiungi;
 
+	ModelProdotto model;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ModelProdotto model = new ModelProdotto();
+		model = new ModelProdotto();
 		model.setIdprodotto(DAOProdotto.getInstance().lastRecord() + 1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
 		nome.textProperty().bindBidirectional(model.descrizioneProperty());
@@ -68,7 +70,9 @@ public class UpdateProdottoController implements Initializable {
 						ModelNegozio newValue) {
 					// TODO Auto-generated method stub
 					ModelListNegozio list=ModelListNegozio.getInstance();
-					testValueidNegozio.setText(String.valueOf(list.cerca(observable.getValue().getNome())));
+					int idNegozio=list.cerca(observable.getValue().getNome());
+					model.setNegozio_idNegozio(idNegozio);
+					testValueidNegozio.setText(String.valueOf(idNegozio));
 				}
 		});
 		
@@ -115,27 +119,8 @@ public class UpdateProdottoController implements Initializable {
 
 	@FXML
 	void Aggiungi(ActionEvent event) {
-		ModelProdotto prodotto = new ModelProdotto();
 		MenuController.mainController.getListaProdotti().clean();
-		MenuController.mainController.getListaProdotti().aggiungi(prodotto);
+		MenuController.mainController.getListaProdotti().aggiungi(model);
 		MenuController.mainController.getListaProdotti().setChange(true);
-	}
-
-	private void bindStringNumber(StringProperty textProp, IntegerProperty intProp) {
-
-		
-		textProp.bindBidirectional(intProp, new StringConverter<Number>() {
-			@Override
-			public String toString(Number object) {
-				return object.toString();
-			}
-			@Override
-			public Number fromString(String string) {
-				return Integer.parseInt(string);
-			}
-
-		});
-		System.out.println(textProp);
-		System.out.println(intProp);
 	}
 }

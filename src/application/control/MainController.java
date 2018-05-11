@@ -3,6 +3,8 @@ package application.control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.db.DAONegozio;
+import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
 import javafx.beans.binding.Bindings;
@@ -118,11 +120,11 @@ public class MainController implements Initializable {
 		boolean b2=listaProdotti.changeProperty().getValue();
 		System.out.println(b1+"\t"+b2);
 		if (b1==true) {
-			listaNegozi.save();
+			listaNegozi.save(DAONegozio.getInstance());
 			listaNegozi.changeProperty().setValue(false);
 		}
 		if (b2=true) {
-			listaProdotti.save();
+			listaProdotti.save(DAOProdotto.getInstance());
 			listaProdotti.changeProperty().setValue(false);
 		}
 		borderPane.setCenter(null);

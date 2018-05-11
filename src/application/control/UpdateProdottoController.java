@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Utils.TIPOCONTENITORE;
-import application.db.DAONegozio;
 import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
 import application.model.ModelNegozio;
@@ -89,11 +88,8 @@ public class UpdateProdottoController implements Initializable {
 	}
 
 	public void populateNomeNegozi(ComboBox<ModelNegozio> combo) {
-		DAONegozio dao = DAONegozio.getInstance();
 		ModelListNegozio model = ModelListNegozio.getInstance();
-		dao.leggi(model);
 		combo.setItems(model.getoListE());
-
 		combo.setConverter(new StringConverter<ModelNegozio>() {
 			@Override
 			public String toString(ModelNegozio object) {

@@ -6,7 +6,7 @@ import application.db.DAOProdotto;
 
 public class ModelListProdotto extends ListModel<ModelProdotto> {
 	private static ModelListProdotto instance;
-	
+
 	private ModelListProdotto() {
 		listE=new ArrayList<>();
 	}
@@ -17,16 +17,11 @@ public class ModelListProdotto extends ListModel<ModelProdotto> {
 			synchronized (ModelListProdotto.class) {
 				if (instance == null) {
 					instance = new ModelListProdotto();
+					DAOProdotto dao=DAOProdotto.getInstance();
+					dao.leggi(instance);
 				}
 			}
 		}
 		return instance;
-	}
-
-	@Override
-	public void save() {
-		DAOProdotto dao=DAOProdotto.getInstance();
-		dao.scrivi(this);
-		setChange(false);
 	}
 }

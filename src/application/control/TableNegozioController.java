@@ -3,7 +3,7 @@ package application.control;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import application.db.DAONegozio;
+
 import application.model.ModelListNegozio;
 import application.model.ModelNegozio;
 import javafx.fxml.FXML;
@@ -45,10 +45,7 @@ public class TableNegozioController implements Initializable {
 		colidNegozio.setCellValueFactory(new PropertyValueFactory<>("key"));
 		colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colIdProdotto.setCellValueFactory(new PropertyValueFactory<>("listaIdProdotti"));
-		
-		DAONegozio dao=DAONegozio.getInstance();
-    	ModelListNegozio dati = ModelListNegozio.getInstance();
-    	dao.leggi(dati);
+	 	ModelListNegozio dati = ModelListNegozio.getInstance();
     	tableNegozio.setItems(dati.getoListE());
 	}
 

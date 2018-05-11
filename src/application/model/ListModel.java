@@ -1,6 +1,8 @@
 package application.model;
 
 import java.util.List;
+
+import application.db.DAO;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -45,8 +47,6 @@ public abstract class ListModel<E>  {
 		return FXCollections.observableList(listE);
 	}
 
-	protected abstract void save();
-	
 	public final BooleanProperty changeProperty() {
 		return this.change;
 	}
@@ -57,5 +57,10 @@ public abstract class ListModel<E>  {
 
 	public final void setChange(final boolean change) {
 		this.changeProperty().set(change);
+	}
+	
+	public void save(DAO<E> dao) {
+		dao.scrivi(this);
+		setChange(false);
 	}
 }

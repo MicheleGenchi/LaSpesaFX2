@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import Utils.TIPOCONTENITORE;
 import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
+import application.model.ModelListProdotto;
 import application.model.ModelNegozio;
 import application.model.ModelProdotto;
 import javafx.beans.binding.Bindings;
@@ -47,12 +48,19 @@ public class UpdateProdottoController implements Initializable {
 	@FXML
 	private Button btnAggiungi;
 
-	ModelProdotto model;
+	private ModelProdotto model;
+	private ModelListNegozio listaNegozi;
+	private ModelListProdotto listaProdotti;
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		listaNegozi=ModelListNegozio.getInstance();
+		listaNegozi.caricaDB();
+		listaProdotti=ModelListProdotto.getInstance();
+		listaProdotti.caricaDB();
 		model = new ModelProdotto();
-		model.setIdprodotto(DAOProdotto.getInstance().lastRecord() + 1);
+		model.setIdprodotto(listaProdotti.getListE().size()+1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
 		nome.textProperty().bindBidirectional(model.nomeProperty());
 		descrizione.textProperty().bindBidirectional(model.descrizioneProperty());
@@ -61,15 +69,14 @@ public class UpdateProdottoController implements Initializable {
 		contenitore.getSelectionModel().selectFirst();
 		testValueContenitore.textProperty().bind(Bindings.convert(contenitore.valueProperty()));
 		model.contenitoreProperty().bind(Bindings.convert(contenitore.valueProperty()));
-		negozio.setItems(ModelListNegozio.getInstance().getoListE());
+		negozio.setItems(listaNegozi.getoListE());
 		populateNomeNegozi(negozio);
 		negozio.valueProperty().addListener(new ChangeListener<ModelNegozio>() {
 				@Override
 				public void changed(ObservableValue<? extends ModelNegozio> observable, ModelNegozio oldValue,
 						ModelNegozio newValue) {
 					// TODO Auto-generated method stub
-					ModelListNegozio list=ModelListNegozio.getInstance();
-					int idNegozio=list.cerca(observable.getValue().getNome());
+					int idNegozio=listaNegozi.cerca(observable.getValue().getNome());
 					model.setNegozio_idNegozio(idNegozio);
 					testValueidNegozio.setText(String.valueOf(idNegozio));
 				}
@@ -88,8 +95,8 @@ public class UpdateProdottoController implements Initializable {
 	}
 
 	public void populateNomeNegozi(ComboBox<ModelNegozio> combo) {
-		ModelListNegozio model = ModelListNegozio.getInstance();
-		combo.setItems(model.getoListE());
+		
+		combo.setItems(listaNegozi.getoListE());
 		combo.setConverter(new StringConverter<ModelNegozio>() {
 			@Override
 			public String toString(ModelNegozio object) {
@@ -115,8 +122,8 @@ public class UpdateProdottoController implements Initializable {
 
 	@FXML
 	void Aggiungi(ActionEvent event) {
-		MenuController.mainController.getListaProdotti().clean();
-		MenuController.mainController.getListaProdotti().aggiungi(model);
-		MenuController.mainController.getListaProdotti().setChange(true);
+		listaProdotti.clean();
+		btnAggiungi.setDisable(listaProdotti.aggiungi(model));
+		System.out.println("listaProdotti.isChange()="+listaProdotti.isChange());
 	}
 }

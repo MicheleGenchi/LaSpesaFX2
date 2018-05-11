@@ -19,10 +19,6 @@ public class ModelNegozio  {
 		setNome(nome);
 	}
 
-	public ModelNegozio(Negozio negozio) {
-		this(negozio.getKey(),negozio.getNome());
-	}
-	
 	public ModelNegozio() {
 		this(0, "");
 	}
@@ -75,4 +71,6 @@ public class ModelNegozio  {
 	public String toString() {
 		return String.valueOf(key.get());
 	}
+	
+	
 }

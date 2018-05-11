@@ -12,9 +12,10 @@ public abstract class ListModel<E>  {
 	protected List<E> listE; 
 	protected ObservableList<E> oListE;
 	protected BooleanProperty change=new SimpleBooleanProperty(false);
+	protected DAO<E> dao;
 	
-	public ListModel() {
-
+	protected ListModel() {
+		
 	}
 	
 	public void clean() {
@@ -22,11 +23,13 @@ public abstract class ListModel<E>  {
 	}
 	
 	public boolean aggiungi(E e) {
-		return listE.add(e);
+		setChange(listE.add(e));
+		return isChange();
 	}
 	
 	public boolean delete(E e) {
-		return listE.remove(e);
+		setChange(listE.remove(e));
+		return isChange();
 	}
 	
 	/**
@@ -59,7 +62,12 @@ public abstract class ListModel<E>  {
 		this.changeProperty().set(change);
 	}
 	
-	public void save(DAO<E> dao) {
+	public void caricaDB() {
+		dao.leggi(this);
+		setChange(false);
+	}
+	
+	public void save() {
 		dao.scrivi(this);
 		setChange(false);
 	}

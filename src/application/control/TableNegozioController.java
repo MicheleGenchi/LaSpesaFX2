@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TableNegozioController implements Initializable {
 
+	private ModelListNegozio listaNegozi;
+	
     @FXML
     private ResourceBundle resources;
 
@@ -32,7 +34,7 @@ public class TableNegozioController implements Initializable {
     @FXML
     private TableColumn<ModelNegozio, List<Integer>> colIdProdotto;
     
-    @FXML
+   @FXML
     void initialize() {
         assert tableNegozio != null : "fx:id=\"tableNegozio\" was not injected: check your FXML file 'viewNegozi.fxml'.";
         assert colidNegozio != null : "fx:id=\"colidNegozio\" was not injected: check your FXML file 'viewNegozi.fxml'.";
@@ -42,11 +44,13 @@ public class TableNegozioController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		listaNegozi=ModelListNegozio.getInstance();
+		listaNegozi.clean();
+		listaNegozi.caricaDB();
 		colidNegozio.setCellValueFactory(new PropertyValueFactory<>("key"));
 		colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colIdProdotto.setCellValueFactory(new PropertyValueFactory<>("listaIdProdotti"));
-	 	ModelListNegozio dati = ModelListNegozio.getInstance();
-    	tableNegozio.setItems(dati.getoListE());
+	   	tableNegozio.setItems(listaNegozi.getoListE());
 	}
 
 	/**

@@ -35,17 +35,6 @@ public class ModelProdotto {
 		setNomeNegozio(getNomeNegozio());
 	}
 	
-	public ModelProdotto(Prodotto prodotto) {
-		this(prodotto.getIdprodotto(),
-				prodotto.getNome(),
-				prodotto.getDescrizione(),
-				prodotto.getMarca(),
-				prodotto.getContenitore(),
-				prodotto.getPeso(),
-				prodotto.getQuantita(),
-				prodotto.getPrezzo(),
-				prodotto.getNegozio_idNegozio());
-	}
 	
 	public ModelProdotto() {
 		this(0, "", "", "", null, "", 0, 0.0f,0);
@@ -208,6 +197,7 @@ public class ModelProdotto {
 
 	public final String getNomeNegozio() {
 		ModelListNegozio mn=ModelListNegozio.getInstance();
+		mn.caricaDB();
 		String appoggio=mn.cerca(negozio_idNegozioProperty().get());
 		this.nomeNegozioProperty().set(appoggio);
 		return this.nomeNegozioProperty().get();

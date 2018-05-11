@@ -5,20 +5,18 @@ import java.util.ArrayList;
 import application.db.DAOProdotto;
 
 public class ModelListProdotto extends ListModel<ModelProdotto> {
-	private static ModelListProdotto instance;
+private static ModelListProdotto instance;
 
-	private ModelListProdotto() {
+	private  ModelListProdotto() {
 		listE=new ArrayList<>();
+		dao=DAOProdotto.getInstance();
 	}
 	
 	public static ModelListProdotto getInstance() {
-		if (instance == null) {
-			// Thread Safe. Might be costly operation in some case
+		if (instance==null) {
 			synchronized (ModelListProdotto.class) {
-				if (instance == null) {
-					instance = new ModelListProdotto();
-					DAOProdotto dao=DAOProdotto.getInstance();
-					dao.leggi(instance);
+				if (instance==null) {
+					return new ModelListProdotto();
 				}
 			}
 		}

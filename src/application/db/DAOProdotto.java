@@ -5,11 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import Utils.Utils;
 import application.model.ListModel;
 import application.model.ModelProdotto;
-import application.model.Prodotto;
+
 
 public class DAOProdotto extends DAO<ModelProdotto> {
 	private static DAOProdotto instance;
@@ -103,7 +102,7 @@ public class DAOProdotto extends DAO<ModelProdotto> {
 		return conta;
 	}
 	
-	public boolean cerca(int idProdotto, Prodotto record) {
+	public boolean cerca(int idProdotto, ModelProdotto record) {
 		boolean trovato=false;
 		String SQL = "select  idprodotto, nome,descrizione,marca, contenitore,peso,quantita,prezzo,negozio_idNegozio" + 
 				"	from spesa2.prodotto" + 

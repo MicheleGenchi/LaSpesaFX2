@@ -4,7 +4,7 @@ import application.db.DAONegozio;
 import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
-import application.model.Prodotto;
+import application.model.ModelProdotto;
 
 public class Test {
 
@@ -14,16 +14,14 @@ public class Test {
 	}
 
 	private void run() {
-		DAONegozio dao = DAONegozio.getInstance();
+		System.out.println("TABELLA NEGOZIO");
 		ModelListNegozio lista = ModelListNegozio.getInstance();
-		dao.leggi(lista);
-		System.out.println(dao);
-		lista.getListE().forEach(System.out::print);
+		lista.caricaDB();
+		lista.getListE().forEach(System.out::println);
 
-		DAOProdotto dao2 = DAOProdotto.getInstance();
+		System.out.println("TABELLA PRODOTTO");
 		ModelListProdotto lista2 = ModelListProdotto.getInstance();
-		dao2.leggi(lista2);
-		System.out.println(dao2);
+		lista2.caricaDB();
 		lista2.getListE().forEach(System.out::print);
 
 		int negozioDaCercare = 1;
@@ -31,15 +29,15 @@ public class Test {
 		String nomeNegozio = lista.cerca(negozioDaCercare);
 		System.out.printf("nome = %2s\n", nomeNegozio);
 		System.out.println("Prodotti venduti ");
-		dao.getIdProdotti(negozioDaCercare).forEach(e -> {
-			Prodotto record = new Prodotto();
-			System.out.println((dao2.cerca(e, record)
+		DAONegozio.getInstance().getIdProdotti(negozioDaCercare).forEach(e -> {
+			ModelProdotto record = new ModelProdotto();
+			DAOProdotto dao=DAOProdotto.getInstance();
+			System.out.println((dao.cerca(e, record)
 					? (String.format("%-10s\t%-10s\t%-5s", record.getMarca(), record.getNome(), record.getPrezzo()))
 					: "non ci sono prodotti"));
 		});
-
-		dao.chiudi();
-		dao2.chiudi();
-
+		DAONegozio.getInstance().chiudi();
+		DAOProdotto.getInstance().chiudi();
 	}
+	
 }

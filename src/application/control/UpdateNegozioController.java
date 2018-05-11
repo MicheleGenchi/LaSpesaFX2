@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.db.DAONegozio;
+import application.model.ModelListNegozio;
 import application.model.ModelNegozio;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 
 public class UpdateNegozioController implements Initializable {
-	
     @FXML
     private ResourceBundle resources;
     
@@ -31,12 +31,15 @@ public class UpdateNegozioController implements Initializable {
     @FXML
     private Button btnAggiungiNegozio;
 
-    ModelNegozio model; 
+    private ModelNegozio model; 
+    private ModelListNegozio listaNegozi;
+    
     @FXML
     void doAggiungiNegozio(ActionEvent event) {
-       	MenuController.mainController.getListaNegozi().clean();
-    	MenuController.mainController.getListaNegozi().aggiungi(model);
-    	MenuController.mainController.getListaNegozi().setChange(true);
+    	listaNegozi.clean();
+    	listaNegozi.aggiungi(model);
+    	btnAggiungiNegozio.setDisable(listaNegozi.aggiungi(model));
+    	System.out.println("listaNegozi.isChange()="+listaNegozi.isChange());
     }
 
     @FXML
@@ -48,7 +51,9 @@ public class UpdateNegozioController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
         model=new ModelNegozio();
-        model.setKey(DAONegozio.getInstance().lastRecord()+1);
+        listaNegozi=ModelListNegozio.getInstance();
+        listaNegozi.caricaDB();
+        model.setKey(listaNegozi.getListE().size()+1);
         textidNegozio.textProperty().bindBidirectional(model.keyProperty(),new NumberStringConverter());
         textNomeNegozio.textProperty().bindBidirectional(model.nomeProperty());
         btnAggiungiNegozio.setDisable(true);

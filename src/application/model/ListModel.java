@@ -23,13 +23,11 @@ public abstract class ListModel<E>  {
 	}
 	
 	public boolean aggiungi(E e) {
-		setChange(listE.add(e));
-		return isChange();
+		return listE.add(e);
 	}
 	
 	public boolean delete(E e) {
-		setChange(listE.remove(e));
-		return isChange();
+		return listE.remove(e);
 	}
 	
 	/**
@@ -64,7 +62,6 @@ public abstract class ListModel<E>  {
 	
 	public void caricaDB() {
 		dao.leggi(this);
-		setChange(false);
 	}
 	
 	public void save() {

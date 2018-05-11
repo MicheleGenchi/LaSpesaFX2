@@ -3,7 +3,6 @@ package application.control;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.db.DAONegozio;
 import application.model.ModelListNegozio;
 import application.model.ModelNegozio;
 import javafx.beans.value.ChangeListener;
@@ -16,59 +15,59 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 
 public class UpdateNegozioController implements Initializable {
-    @FXML
-    private ResourceBundle resources;
-    
-    @FXML
-    private TextField textidNegozio;
+	@FXML
+	private ResourceBundle resources;
 
-    @FXML
-    private URL location;
+	@FXML
+	private TextField textidNegozio;
 
-    @FXML
-    private TextField textNomeNegozio;
+	@FXML
+	private URL location;
 
-    @FXML
-    private Button btnAggiungiNegozio;
+	@FXML
+	private TextField textNomeNegozio;
 
-    private ModelNegozio model; 
-    private ModelListNegozio listaNegozi;
-    
-    @FXML
-    void doAggiungiNegozio(ActionEvent event) {
-    	listaNegozi.clean();
-    	listaNegozi.aggiungi(model);
-    	btnAggiungiNegozio.setDisable(listaNegozi.aggiungi(model));
-    	System.out.println("listaNegozi.isChange()="+listaNegozi.isChange());
-    }
+	@FXML
+	private Button btnAggiungiNegozio;
 
-    @FXML
-    void initialize() {
-        assert textNomeNegozio != null : "fx:id=\"textNomeNegozio\" was not injected: check your FXML file 'UpdateSuperMercato.fxml'.";
-        assert btnAggiungiNegozio != null : "fx:id=\"btnAggiungiNegozio\" was not injected: check your FXML file 'UpdateSuperMercato.fxml'.";
-    }
+	private ModelNegozio model;
+	private ModelListNegozio listaNegozi;
+
+	@FXML
+	void doAggiungiNegozio(ActionEvent event) {
+		if (listaNegozi.aggiungi(model)) {
+			listaNegozi.clean();
+			btnAggiungiNegozio.setDisable(true);
+			listaNegozi.setChange(true);
+		}
+	}
+
+	@FXML
+	void initialize() {
+		assert textNomeNegozio != null : "fx:id=\"textNomeNegozio\" was not injected: check your FXML file 'UpdateSuperMercato.fxml'.";
+		assert btnAggiungiNegozio != null : "fx:id=\"btnAggiungiNegozio\" was not injected: check your FXML file 'UpdateSuperMercato.fxml'.";
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        model=new ModelNegozio();
-        listaNegozi=ModelListNegozio.getInstance();
-        listaNegozi.caricaDB();
-        model.setKey(listaNegozi.getListE().size()+1);
-        textidNegozio.textProperty().bindBidirectional(model.keyProperty(),new NumberStringConverter());
-        textNomeNegozio.textProperty().bindBidirectional(model.nomeProperty());
-        btnAggiungiNegozio.setDisable(true);
-        textNomeNegozio.textProperty().addListener(new ChangeListener<String>() {
+		model = new ModelNegozio();
+		listaNegozi = ModelListNegozio.getInstance();
+		listaNegozi.caricaDB();
+		model.setKey(listaNegozi.getListE().size() + 1);
+		textidNegozio.textProperty().bindBidirectional(model.keyProperty(), new NumberStringConverter());
+		textNomeNegozio.textProperty().bindBidirectional(model.nomeProperty());
+		btnAggiungiNegozio.setDisable(true);
+		textNomeNegozio.textProperty().addListener(new ChangeListener<String>() {
 
-            @Override
-            public void changed(ObservableValue<? extends String> ov, String t, String t1) {
-                //System.out.println(t+"====="+t1);
-               if(t1.equals(""))
-            	   btnAggiungiNegozio.setDisable(true);
-               else
-            	   btnAggiungiNegozio.setDisable(false);
-            }
-        });
+			@Override
+			public void changed(ObservableValue<? extends String> ov, String t, String t1) {
+				// System.out.println(t+"====="+t1);
+				if (t1.equals(""))
+					btnAggiungiNegozio.setDisable(true);
+				else
+					btnAggiungiNegozio.setDisable(false);
+			}
+		});
 
 	}
 }
-

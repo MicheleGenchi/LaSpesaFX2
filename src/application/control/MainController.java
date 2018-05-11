@@ -88,12 +88,10 @@ public class MainController implements Initializable {
 		System.out.println(b1+"\t"+b2);
 		if (b1==true) {
 			listaNegozi.save();
-			listaNegozi.changeProperty().setValue(false);
 			listaNegozi.caricaDB();
 		}
 		if (b2=true) {
 			listaProdotti.save();
-			listaProdotti.changeProperty().setValue(false);
 			listaProdotti.caricaDB();
 		}
 		borderPane.setCenter(null);

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Utils.TIPOCONTENITORE;
-import application.db.DAOProdotto;
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
 import application.model.ModelNegozio;
@@ -46,7 +45,7 @@ public class UpdateProdottoController implements Initializable {
 	@FXML
 	private TextField testValueidNegozio;
 	@FXML
-	private Button btnAggiungi;
+	private Button btnAggiungiProdotto;
 
 	private ModelProdotto model;
 	private ModelListNegozio listaNegozi;
@@ -87,9 +86,9 @@ public class UpdateProdottoController implements Initializable {
 			public void changed(ObservableValue<? extends String> ov, String t, String t1) {
 				// System.out.println(t+"====="+t1);
 				if (t1.equals(""))
-					btnAggiungi.setDisable(true);
+					btnAggiungiProdotto.setDisable(true);
 				else
-					btnAggiungi.setDisable(false);
+					btnAggiungiProdotto.setDisable(false);
 			}
 		});
 	}
@@ -121,9 +120,11 @@ public class UpdateProdottoController implements Initializable {
 	}
 
 	@FXML
-	void Aggiungi(ActionEvent event) {
-		listaProdotti.clean();
-		btnAggiungi.setDisable(listaProdotti.aggiungi(model));
-		System.out.println("listaProdotti.isChange()="+listaProdotti.isChange());
+	void doAggiungiProdotto(ActionEvent event) {
+		if (listaProdotti.aggiungi(model)) {
+			listaProdotti.clean();
+			btnAggiungiProdotto.setDisable(true);
+			listaProdotti.setChange(true);
+		}
 	}
 }

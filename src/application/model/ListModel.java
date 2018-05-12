@@ -10,13 +10,14 @@ import javafx.collections.ObservableList;
 
 public abstract class ListModel<E>  {
 	protected List<E> listE; 
-	protected ObservableList<E> oListE;
-	protected BooleanProperty change=new SimpleBooleanProperty(false);
-	protected DAO<E> dao;
+	private ObservableList<E> oListE;
+	private BooleanProperty change=new SimpleBooleanProperty(false);
+	private DAO<E> dao;
 	
 	protected ListModel() {
 		
 	}
+	
 	
 	public void clean() {
 		listE.clear();
@@ -59,13 +60,31 @@ public abstract class ListModel<E>  {
 	public final void setChange(final boolean change) {
 		this.changeProperty().set(change);
 	}
-	
-	public void caricaDB() {
-		dao.leggi(this);
+
+	/**
+	 * @return the dao
+	 */
+	public DAO<E> getDao() {
+		return dao;
+	}
+
+	/**
+	 * @param dao the dao to set
+	 */
+	public void setDao(DAO<E> dao) {
+		this.dao = dao;
 	}
 	
-	public void save() {
-		dao.scrivi(this);
-		setChange(false);
+	public boolean caricaDB() {
+		return dao.leggi(this)>0?true:false;
 	}
+	
+	public boolean save() {
+		if (dao.scrivi(this)>0) {
+			setChange(false);
+			return true;
+		}
+		return false;
+	}
+
 }

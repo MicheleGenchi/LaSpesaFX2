@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TableNegozioController implements Initializable {
 
-	private ModelListNegozio listaNegozi;
+	private ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
 	
     @FXML
     private ResourceBundle resources;
@@ -44,9 +44,8 @@ public class TableNegozioController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		listaNegozi=ModelListNegozio.getInstance();
-		listaNegozi.clean();
-		listaNegozi.caricaDB();
+		if (!listaNegozi.caricaDB())
+			System.out.println("lista Negozi non sono stati caricati");
 		colidNegozio.setCellValueFactory(new PropertyValueFactory<>("key"));
 		colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colIdProdotto.setCellValueFactory(new PropertyValueFactory<>("listaIdProdotti"));

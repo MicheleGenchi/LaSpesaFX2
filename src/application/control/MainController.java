@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -81,20 +80,21 @@ public class MainController implements Initializable {
 
 	@FXML
 	void doSalva(ActionEvent event) {
+		System.out.println(listaNegozi.getListE());
+		boolean b1=listaNegozi.isChange();
+		boolean b2=listaProdotti.isChange();
+		System.out.println(b1+"\t"+b2);
+//		if (b1==true) {
+//			listaNegozi.save();
+//			listaNegozi.caricaDB();
+//		}
+//		if (b2==true) {
+//			listaProdotti.save();
+//			listaProdotti.caricaDB();
+//		}
+		borderPane.setCenter(null);
 		Alert alert = new Alert(AlertType.INFORMATION, "I dati sono stati scritti sul database");
 		alert.show();
-		boolean b1=listaNegozi.changeProperty().getValue();
-		boolean b2=listaProdotti.changeProperty().getValue();
-		System.out.println(b1+"\t"+b2);
-		if (b1==true) {
-			listaNegozi.save();
-			listaNegozi.caricaDB();
-		}
-		if (b2=true) {
-			listaProdotti.save();
-			listaProdotti.caricaDB();
-		}
-		borderPane.setCenter(null);
  	}
 
 	@Override
@@ -102,10 +102,8 @@ public class MainController implements Initializable {
 		listaNegozi=ModelListNegozio.getInstance();
 		listaProdotti=ModelListProdotto.getInstance();
 		MenuController.injection(this);
-		System.out.println("listaNegozi.isChange()="+listaNegozi.isChange());
-		System.out.println("listaProdotti.isChange()="+listaProdotti.isChange());
-		buttonSalva.disableProperty().bind(Bindings.not(
-				listaNegozi.changeProperty().or
-				(listaProdotti.changeProperty())));
+//		buttonSalva.disableProperty().bind(Bindings.not(
+//				listaNegozi.changeProperty().or
+//				(listaProdotti.changeProperty())));
 	}
 }

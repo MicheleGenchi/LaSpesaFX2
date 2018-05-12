@@ -48,16 +48,12 @@ public class UpdateProdottoController implements Initializable {
 	private Button btnAggiungiProdotto;
 
 	private ModelProdotto model;
-	private ModelListNegozio listaNegozi;
-	private ModelListProdotto listaProdotti;
+	private ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
+	private ModelListProdotto listaProdotti=ModelListProdotto.getInstance();
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		listaNegozi=ModelListNegozio.getInstance();
-		listaNegozi.caricaDB();
-		listaProdotti=ModelListProdotto.getInstance();
-		listaProdotti.caricaDB();
 		model = new ModelProdotto();
 		model.setIdprodotto(listaProdotti.getListE().size()+1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
@@ -91,6 +87,7 @@ public class UpdateProdottoController implements Initializable {
 					btnAggiungiProdotto.setDisable(false);
 			}
 		});
+		btnAggiungiProdotto.setDisable(true);
 	}
 
 	public void populateNomeNegozi(ComboBox<ModelNegozio> combo) {
@@ -121,8 +118,9 @@ public class UpdateProdottoController implements Initializable {
 
 	@FXML
 	void doAggiungiProdotto(ActionEvent event) {
-		if (listaProdotti.aggiungi(model)) {
-			listaProdotti.clean();
+		listaProdotti.clean();
+		boolean success=listaProdotti.aggiungi(model);
+		if (success) {
 			btnAggiungiProdotto.setDisable(true);
 			listaProdotti.setChange(true);
 		}

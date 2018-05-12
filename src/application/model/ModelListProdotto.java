@@ -9,7 +9,7 @@ public class ModelListProdotto extends ListModel<ModelProdotto> {
 
 	private ModelListProdotto() {
 		listE = new ArrayList<>();
-		dao = DAOProdotto.getInstance();
+		setDao(DAOProdotto.getInstance());
 	}
 
 	public static ModelListProdotto getInstance() {

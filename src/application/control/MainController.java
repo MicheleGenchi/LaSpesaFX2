@@ -13,13 +13,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.util.StringConverter;
 
 public class MainController implements Initializable {
 
-	ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
-	ModelListProdotto listaProdotti=ModelListProdotto.getInstance();
+	ModelListNegozio listaNegozi;
+	ModelListProdotto listaProdotti;
 	
+    @FXML
+    private TextField check;
+    
 	@FXML
 	private ResourceBundle resources;
 
@@ -101,8 +106,24 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		MenuController.injection(this);
-		listaNegozi.setChange(false);
-		listaProdotti.setChange(false);
+		listaNegozi = ModelListNegozio.getInstance();
+		listaProdotti = ModelListProdotto.getInstance();
+		check.textProperty().bindBidirectional(listaNegozi.changeProperty(), new StringConverter<Boolean>() {
+
+			@Override
+			public String toString(Boolean object) {
+				// TODO Auto-generated method stub
+				return object.toString();
+			}
+
+			@Override
+			public Boolean fromString(String string) {
+				// TODO Auto-generated method stub
+				return new Boolean(string);
+			}
+			
+		});
+		
 		buttonSalva.disableProperty().bind(Bindings.not(
 				listaNegozi.changeProperty().or
 				(listaProdotti.changeProperty())));

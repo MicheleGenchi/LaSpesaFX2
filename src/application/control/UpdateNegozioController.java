@@ -31,7 +31,7 @@ public class UpdateNegozioController implements Initializable {
 	private Button btnAggiungiNegozio;
 
 	private ModelNegozio model;
-	private ModelListNegozio listaNegozi= ModelListNegozio.getInstance();
+	private ModelListNegozio listaNegozi;
 
 	@FXML
 	void doAggiungiNegozio(ActionEvent event) {
@@ -51,7 +51,9 @@ public class UpdateNegozioController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new ModelNegozio();
+		listaNegozi= ModelListNegozio.getInstance();
 		listaNegozi.caricaDB();
+		listaNegozi.setChange(false);
 		model.setKey(listaNegozi.getListE().size() + 1);
 		textidNegozio.textProperty().bindBidirectional(model.keyProperty(), new NumberStringConverter());
 		textNomeNegozio.textProperty().bindBidirectional(model.nomeProperty());

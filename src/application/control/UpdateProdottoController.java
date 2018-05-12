@@ -48,13 +48,17 @@ public class UpdateProdottoController implements Initializable {
 	private Button btnAggiungiProdotto;
 
 	private ModelProdotto model;
-	private ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
-	private ModelListProdotto listaProdotti=ModelListProdotto.getInstance();
+	private ModelListNegozio listaNegozi;
+	private ModelListProdotto listaProdotti;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new ModelProdotto();
+		listaNegozi=ModelListNegozio.getInstance();
+		listaNegozi.caricaDB();
+		listaProdotti=ModelListProdotto.getInstance();
+		listaProdotti.caricaDB();
 		model.setIdprodotto(listaProdotti.getListE().size()+1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
 		nome.textProperty().bindBidirectional(model.nomeProperty());
@@ -118,7 +122,6 @@ public class UpdateProdottoController implements Initializable {
 
 	@FXML
 	void doAggiungiProdotto(ActionEvent event) {
-		listaProdotti.clean();
 		boolean success=listaProdotti.aggiungi(model);
 		if (success) {
 			btnAggiungiProdotto.setDisable(true);

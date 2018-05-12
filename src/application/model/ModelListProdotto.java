@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import application.db.DAOProdotto;
 
-public class ModelListProdotto extends ListModel<ModelProdotto> {
+public final class ModelListProdotto extends ListModel<ModelProdotto> {
 	private static ModelListProdotto instance;
 
 	private ModelListProdotto() {
@@ -16,7 +16,7 @@ public class ModelListProdotto extends ListModel<ModelProdotto> {
 		if (instance == null) {
 			synchronized (ModelListProdotto.class) {
 				if (instance == null)
-					return new ModelListProdotto();
+					instance=new ModelListProdotto();
 			}
 		}
 		return instance;

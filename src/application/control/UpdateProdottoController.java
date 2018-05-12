@@ -57,10 +57,12 @@ public class UpdateProdottoController implements Initializable {
 		model = new ModelProdotto();
 		listaNegozi.caricaDB();
 		listaProdotti.caricaDB();
+		listaProdotti.setChange(false);
 		model.setIdprodotto(listaProdotti.getListE().size()+1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());
 		nome.textProperty().bindBidirectional(model.nomeProperty());
 		descrizione.textProperty().bindBidirectional(model.descrizioneProperty());
+		peso.textProperty().bindBidirectional(model.pesoProperty());
 		marca.textProperty().bindBidirectional(model.marcaProperty());
 		contenitore.getItems().addAll(TIPOCONTENITORE.values());
 		contenitore.getSelectionModel().selectFirst();
@@ -120,6 +122,7 @@ public class UpdateProdottoController implements Initializable {
 
 	@FXML
 	void doAggiungiProdotto(ActionEvent event) {
+		listaProdotti.clean();
 		boolean success=listaProdotti.aggiungi(model);
 		if (success) {
 			btnAggiungiProdotto.setDisable(true);

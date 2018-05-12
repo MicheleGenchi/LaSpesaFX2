@@ -35,7 +35,6 @@ public class UpdateNegozioController implements Initializable {
 
 	@FXML
 	void doAggiungiNegozio(ActionEvent event) {
-		listaNegozi.clean();
 		boolean success=listaNegozi.aggiungi(model);
 		if (success) {
 			btnAggiungiNegozio.setDisable(true);

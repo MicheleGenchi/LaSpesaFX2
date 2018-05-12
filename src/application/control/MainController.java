@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import application.model.ModelListNegozio;
 import application.model.ModelListProdotto;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,8 +17,8 @@ import javafx.scene.layout.BorderPane;
 
 public class MainController implements Initializable {
 
-	ModelListNegozio listaNegozi;
-	ModelListProdotto listaProdotti;
+	ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
+	ModelListProdotto listaProdotti=ModelListProdotto.getInstance();
 	
 	@FXML
 	private ResourceBundle resources;
@@ -99,11 +100,11 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		listaNegozi=ModelListNegozio.getInstance();
-		listaProdotti=ModelListProdotto.getInstance();
 		MenuController.injection(this);
-//		buttonSalva.disableProperty().bind(Bindings.not(
-//				listaNegozi.changeProperty().or
-//				(listaProdotti.changeProperty())));
+		listaNegozi.setChange(false);
+		listaProdotti.setChange(false);
+		buttonSalva.disableProperty().bind(Bindings.not(
+				listaNegozi.changeProperty().or
+				(listaProdotti.changeProperty())));
 	}
 }

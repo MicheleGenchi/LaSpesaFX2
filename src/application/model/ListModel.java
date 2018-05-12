@@ -9,15 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public abstract class ListModel<E>  {
-	protected List<E> listE; 
+	private List<E> listE; 
 	private ObservableList<E> oListE;
 	private BooleanProperty change=new SimpleBooleanProperty(false);
 	private DAO<E> dao;
-	
-	protected ListModel() {
-		
-	}
-	
 	
 	public void clean() {
 		listE.clear();
@@ -85,6 +80,13 @@ public abstract class ListModel<E>  {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * @param listE the listE to set
+	 */
+	public void setListE(List<E> listE) {
+		this.listE = listE;
 	}
 
 }

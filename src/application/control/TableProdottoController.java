@@ -61,6 +61,8 @@ public class TableProdottoController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		listaNegozi.caricaDB();
+		listaProdotti.caricaDB();
 		idprodotto.setCellValueFactory(new PropertyValueFactory<>("idprodotto"));
 		nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		descrizione.setCellValueFactory(new PropertyValueFactory<>("nome"));

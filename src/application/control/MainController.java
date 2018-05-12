@@ -86,10 +86,8 @@ public class MainController implements Initializable {
 
 	@FXML
 	void doSalva(ActionEvent event) {
-		System.out.println(listaNegozi.getListE());
 		boolean b1=listaNegozi.isChange();
 		boolean b2=listaProdotti.isChange();
-		System.out.println(b1+"\t"+b2);
 		if (b1==true) {
 			listaNegozi.save();
 			listaNegozi.caricaDB();

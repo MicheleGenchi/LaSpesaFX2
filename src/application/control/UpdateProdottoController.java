@@ -63,6 +63,8 @@ public class UpdateProdottoController implements Initializable {
 		nome.textProperty().bindBidirectional(model.nomeProperty());
 		descrizione.textProperty().bindBidirectional(model.descrizioneProperty());
 		peso.textProperty().bindBidirectional(model.pesoProperty());
+		quantita.textProperty().bindBidirectional(model.quantitaProperty(), new NumberStringConverter());
+		prezzo.textProperty().bindBidirectional(model.prezzoProperty(), new NumberStringConverter());
 		marca.textProperty().bindBidirectional(model.marcaProperty());
 		contenitore.getItems().addAll(TIPOCONTENITORE.values());
 		contenitore.getSelectionModel().selectFirst();

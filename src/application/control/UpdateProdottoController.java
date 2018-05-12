@@ -48,16 +48,14 @@ public class UpdateProdottoController implements Initializable {
 	private Button btnAggiungiProdotto;
 
 	private ModelProdotto model;
-	private ModelListNegozio listaNegozi;
-	private ModelListProdotto listaProdotti;
+	private ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
+	private ModelListProdotto listaProdotti=ModelListProdotto.getInstance();
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model = new ModelProdotto();
-		listaNegozi=ModelListNegozio.getInstance();
 		listaNegozi.caricaDB();
-		listaProdotti=ModelListProdotto.getInstance();
 		listaProdotti.caricaDB();
 		model.setIdprodotto(listaProdotti.getListE().size()+1);
 		idprodotto.textProperty().bindBidirectional(model.idprodottoProperty(), new NumberStringConverter());

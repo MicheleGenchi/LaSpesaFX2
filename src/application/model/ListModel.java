@@ -71,6 +71,7 @@ public abstract class ListModel<E>  {
 	}
 	
 	public boolean caricaDB() {
+		clean();
 		return dao.leggi(this)>0?true:false;
 	}
 	

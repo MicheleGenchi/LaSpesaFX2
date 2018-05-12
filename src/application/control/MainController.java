@@ -19,8 +19,8 @@ import javafx.util.StringConverter;
 
 public class MainController implements Initializable {
 
-	ModelListNegozio listaNegozi;
-	ModelListProdotto listaProdotti;
+	ModelListNegozio listaNegozi=ModelListNegozio.getInstance();
+	ModelListProdotto listaProdotti=ModelListProdotto.getInstance();
 	
     @FXML
     private TextField check;
@@ -90,14 +90,14 @@ public class MainController implements Initializable {
 		boolean b1=listaNegozi.isChange();
 		boolean b2=listaProdotti.isChange();
 		System.out.println(b1+"\t"+b2);
-//		if (b1==true) {
-//			listaNegozi.save();
-//			listaNegozi.caricaDB();
-//		}
-//		if (b2==true) {
-//			listaProdotti.save();
-//			listaProdotti.caricaDB();
-//		}
+		if (b1==true) {
+			listaNegozi.save();
+			listaNegozi.caricaDB();
+		}
+		if (b2==true) {
+			listaProdotti.save();
+			listaProdotti.caricaDB();
+		}
 		borderPane.setCenter(null);
 		Alert alert = new Alert(AlertType.INFORMATION, "I dati sono stati scritti sul database");
 		alert.show();
@@ -106,8 +106,7 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		MenuController.injection(this);
-		listaNegozi = ModelListNegozio.getInstance();
-		listaProdotti = ModelListProdotto.getInstance();
+
 		check.textProperty().bindBidirectional(listaNegozi.changeProperty(), new StringConverter<Boolean>() {
 
 			@Override

@@ -19,9 +19,10 @@ public class Main extends Application {
 			
 			@SuppressWarnings("unused")
 			MainController controller=(MainController) loader.getController();
-			
+			MainController.injection(primaryStage);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

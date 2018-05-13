@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class MainController implements Initializable {
@@ -61,6 +62,8 @@ public class MainController implements Initializable {
 
 	}
 
+	private static Stage primaryStage;
+	
 	@FXML
 	void initialize() {
 		assert borderPane != null : "fx:id=\"borderPane\" was not injected: check your FXML file 'Main.fxml'.";
@@ -103,8 +106,7 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		MenuController.injection(this);
-
+	
 		check.textProperty().bindBidirectional(listaNegozi.changeProperty(), new StringConverter<Boolean>() {
 
 			@Override
@@ -124,5 +126,14 @@ public class MainController implements Initializable {
 		buttonSalva.disableProperty().bind(Bindings.not(
 				listaNegozi.changeProperty().or
 				(listaProdotti.changeProperty())));
+	}
+
+	public static void injection(Stage primaryStage) {
+		MainController.primaryStage=primaryStage;
+		
+	}
+
+	public static Stage getPrimaryStage() {
+		return primaryStage;
 	}
 }

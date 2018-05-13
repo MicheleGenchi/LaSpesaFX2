@@ -3,6 +3,9 @@ package application.control;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import application.db.DAONegozio;
+import application.db.DAOProdotto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,7 +76,11 @@ public class MenuController {
 
     @FXML
     void doChiudiProgramma(ActionEvent event) {
-
+    	if (DAONegozio.getInstance().isConnect())
+    		DAONegozio.getInstance().chiudi();
+    	if (DAOProdotto.getInstance().isConnect()) 
+    		DAOProdotto.getInstance().chiudi();
+    	MainController.getPrimaryStage().close();
     }
 
     @FXML
@@ -145,9 +152,9 @@ public class MenuController {
         assert menuInformazioni != null : "fx:id=\"menuInformazioni\" was not injected: check your FXML file 'menu.fxml'.";
     }
 
-	public static void injection(MainController mainController) {
-		MenuController.mainController=mainController;
-	}
+//	public static void injection(MainController mainController) {
+//		MenuController.mainController=mainController;
+//	}
 }
 
 

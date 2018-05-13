@@ -7,7 +7,6 @@ import application.model.ListModel;
 
 public abstract class DAO<e> {
 	protected static Connection conn;
-	private boolean connect;
 		
 
 	public DAO() {

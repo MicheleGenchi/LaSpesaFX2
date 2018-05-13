@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 
 public abstract class ListModel<E>  {
 	private List<E> listE; 
+	@SuppressWarnings("unused")
 	private ObservableList<E> oListE;
 	private BooleanProperty change=new SimpleBooleanProperty(false);
 	private DAO<E> dao;

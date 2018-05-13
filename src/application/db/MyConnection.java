@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class MyConnection {
 	private final static String URL = "jdbc:mysql://localhost:3306/";
 	private final static String DATABASE = "spesa2?autoReconnect=true&useSSL=false";
-	private final static String USER = "root";
-	private final static String PASSWORD = "mysql123";
+//	private final static String USER = "root";
+//	private final static String PASSWORD = "mysql123";
 	private String user;
 	private String password;
 	private static MyConnection instance;

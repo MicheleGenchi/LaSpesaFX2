@@ -63,6 +63,8 @@ public class TableProdottoController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		listaNegozi.caricaDB();
 		listaProdotti.caricaDB();
+		if (!listaProdotti.caricaDB())
+			System.out.println("lista Prodotti non sono stati caricati");
 		idprodotto.setCellValueFactory(new PropertyValueFactory<>("idprodotto"));
 		nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		descrizione.setCellValueFactory(new PropertyValueFactory<>("nome"));

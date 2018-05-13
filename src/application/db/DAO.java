@@ -7,11 +7,11 @@ import application.model.ListModel;
 
 public abstract class DAO<e> {
 	protected static Connection conn;
+	private boolean connect;
+		
 
 	public DAO() {
-		conn=MyConnection.getInstance().open();
-		if (conn==null)
-			System.out.println("Impossibile accedere al database");
+		
 	}
 
 	/**
@@ -43,6 +43,15 @@ public abstract class DAO<e> {
 		} catch (SQLException e) {
 			System.out.println("Nessuna connessiona da chiudere");
 		}
+	}
+
+	/**
+	 * @return the connect
+	 */
+	public boolean isConnect() {
+		conn=MyConnection.getInstance().open();
+		System.out.println(conn==null?"nessuna connessione disponibile":"connessione al database con successo");
+		return (conn==null?false:true);
 	}
 
 }

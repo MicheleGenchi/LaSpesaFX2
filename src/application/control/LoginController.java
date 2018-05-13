@@ -35,6 +35,9 @@ public class LoginController implements Initializable {
     @FXML
     void doLogin(ActionEvent event) {
     	Connection conn = MyConnection.getInstance().setUser(model.getUtente()).setPassword(model.getPassword()).open();
+    	if (conn==null) {
+    		System.exit(0);
+    	}
     }
 
     @FXML
@@ -47,8 +50,8 @@ public class LoginController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		model=new ModelLogin();
-		utente.textProperty().bind(model.utenteProperty());
-		password.textProperty().bind(model.passwordProperty());
+		utente.textProperty().bindBidirectional(model.utenteProperty());
+		password.textProperty().bindBidirectional(model.passwordProperty());
 	}
 }
 

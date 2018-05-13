@@ -50,26 +50,15 @@ public class MyConnection {
 	}
 
 	public Connection open() {
-		if (isCredenzialiAccesso()) {
-			System.out.println("Credenziali di accesso corrette");
-			System.out.println("Attendere la connessione al database...");
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				return DriverManager.getConnection(URL + DATABASE, user, password);
-			} catch (ClassNotFoundException e1) {
-				System.out.println("Driver JDBC mancante");
-				System.exit(0);
-			} catch (SQLException e) {
-				System.out.println("Database non presente");
-				System.exit(0);
-			}
-		} else {
-			System.out.println("Credendiziali errate");
+		System.out.println("Attendere la connessione al database...");
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			return DriverManager.getConnection(URL + DATABASE, user, password);
+		} catch (ClassNotFoundException e1) {
+			System.out.println("Driver JDBC mancante");
+		} catch (SQLException e) {
+			System.out.printf("Utente: %s\tPassword: %s non sono corrette\n", user, password);
 		}
 		return null;
-	}
-
-	private boolean isCredenzialiAccesso() {
-		return (USER == user && PASSWORD == password);
 	}
 }

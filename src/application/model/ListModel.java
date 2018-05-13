@@ -72,15 +72,18 @@ public abstract class ListModel<E>  {
 	
 	public boolean caricaDB() {
 		clean();
-		return dao.leggi(this)>0?true:false;
+		if (dao.isConnect()) 
+			return dao.leggi(this)>0?true:false;
+		return false;
 	}
 	
 	public boolean save() {
-		if (dao.scrivi(this)>0) {
-			setChange(false);
-			return true;
-		}
-		return false;
+		if (!dao.isConnect())
+			return false;
+		if (dao.scrivi(this)<0)
+			return false;
+		setChange(false);
+		return true;
 	}
 
 	/**

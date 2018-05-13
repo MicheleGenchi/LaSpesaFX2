@@ -83,7 +83,17 @@ public class MenuController {
 
     @FXML
     void doLogin(ActionEvent event) {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Login.fxml"));
 
+		Node viewLogin = null;
+		try {
+			viewLogin = loader.load();
+			viewLogin.getStyleClass().add(getClass().getResource("../view/application.css").toExternalForm());
+			mainController.getBorderPane().setCenter(viewLogin);
+		} catch (IOException e) {
+			System.err.println("viewLogin = loader.load();");
+			e.printStackTrace();
+		}
     }
 
     @FXML

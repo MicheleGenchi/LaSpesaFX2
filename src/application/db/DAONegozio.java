@@ -14,7 +14,7 @@ public class DAONegozio extends DAO<ModelNegozio> {
 private static DAONegozio instance;
 
 	private DAONegozio() {
-
+		
 	}
 	
 	public static DAONegozio getInstance() {

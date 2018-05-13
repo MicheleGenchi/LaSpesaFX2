@@ -2,46 +2,50 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../view/application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.control.LoginController">
    <children>
-      <Label id="titolo" stylesheets="@application.css" text="Login" />
-      <VBox styleClass="vbox" stylesheets="@application.css">
+      <AnchorPane styleClass="pane" stylesheets="@../view/application.css">
          <children>
-            <Label stylesheets="@application.css" text="Utente" />
-            <TextField styleClass="text" stylesheets="@application.css" />
+            <Label id="titolo" styleClass="pane" stylesheets="@../view/application.css" text="Login" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="10.0" />
          </children>
-      </VBox>
-      <VBox styleClass="vbox" stylesheets="@application.css">
-         <children>
-            <Label stylesheets="@application.css" text="Password" />
-            <TextField styleClass="text" stylesheets="@application.css" />
-         </children>
-      </VBox>
-      <AnchorPane>
+      </AnchorPane>
+      <Label stylesheets="@../view/application.css" text="Utente">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="utente" styleClass="text" stylesheets="@application.css">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </TextField>
+      <Label stylesheets="@../view/application.css" text="Password">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="password" accessibleRole="PASSWORD_FIELD" styleClass="text" stylesheets="@application.css">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </TextField>
+      <AnchorPane styleClass="pane" stylesheets="@../view/application.css">
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@application.css" text="Button" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </Button>
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#doLogin" text="Accesso al database" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
    </children>
    <styleClass>
-      <String fx:value="pane" />
       <String fx:value="vbox" />
+      <String fx:value="pane" />
    </styleClass>
 </VBox>

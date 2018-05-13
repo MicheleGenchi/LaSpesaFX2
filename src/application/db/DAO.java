@@ -9,8 +9,9 @@ public abstract class DAO<e> {
 	protected static Connection conn;
 
 	public DAO() {
-		if (conn == null)
-			conn = MyConnection.getInstance().setUser("root").setPassword("mysql123").open();
+		conn=MyConnection.getInstance().open();
+		if (conn==null)
+			System.out.println("Impossibile accedere al database");
 	}
 
 	/**

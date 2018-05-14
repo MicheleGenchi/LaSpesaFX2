@@ -16,15 +16,14 @@ public class ModelInformazioni {
 	private StringProperty contratto = new SimpleStringProperty();
 
 	public ModelInformazioni() {
-		setProgrammatore("Michele Genchi");
-		setVersione("1.0");
-		setTipoLicenza("freeware");
-		setContratto("copia legalmente registrata");
+		setProgrammatore("");
+		setVersione("");
+		setTipoLicenza("");
+		setContratto("");
 	}
 
-	public ModelInformazioni(String suffisso) {
-		ResourceBundle res = ResourceBundle.getBundle(suffisso);
-
+	public ModelInformazioni(Locale locale, String suffisso) {
+		ResourceBundle res = ResourceBundle.getBundle(suffisso, locale);
 		setProgrammatore(res.getString("programmatore"));
 		setVersione(res.getString("versione"));
 		setTipoLicenza(res.getString("tipoLicenza"));

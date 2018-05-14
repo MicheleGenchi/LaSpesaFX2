@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import application.model.ModelInformazioni;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -45,7 +46,11 @@ public class InformazioniController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		ModelInformazioni model=new ModelInformazioni(Locale.getDefault(), "Bundle.informazioni");
+		programmatore.setText(programmatore.getText().concat(" : ").concat(model.getProgrammatore()));
+		versione.setText(versione.getText().concat(" : ").concat(model.getVersione()));
+		tipoLicenza.setText(tipoLicenza.getText().concat(" : ").concat(model.getTipoLicenza()));
+		contratto.setText(contratto.getText().concat(" :\n").concat(model.getContratto()));
 	}
 	
     @FXML

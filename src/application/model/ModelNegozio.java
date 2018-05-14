@@ -20,7 +20,7 @@ public class ModelNegozio  {
 	}
 
 	public ModelNegozio() {
-		this(0, "");
+		this(ModelListNegozio.getInstance().getListE().size() + 1, "");
 	}
 
 	public final IntegerProperty keyProperty() {

@@ -106,7 +106,7 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	
+		MenuController.injection(this);
 		check.textProperty().bindBidirectional(listaNegozi.changeProperty(), new StringConverter<Boolean>() {
 
 			@Override
@@ -130,7 +130,6 @@ public class MainController implements Initializable {
 
 	public static void injection(Stage primaryStage) {
 		MainController.primaryStage=primaryStage;
-		
 	}
 
 	public static Stage getPrimaryStage() {

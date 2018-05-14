@@ -54,7 +54,6 @@ public class UpdateNegozioController implements Initializable {
 		model = new ModelNegozio();
 		listaNegozi.caricaDB();
 		listaNegozi.setChange(false);
-		model.setKey(listaNegozi.getListE().size() + 1);
 		textidNegozio.textProperty().bindBidirectional(model.keyProperty(), new NumberStringConverter());
 		textNomeNegozio.textProperty().bindBidirectional(model.nomeProperty());
 		btnAggiungiNegozio.setDisable(true);
